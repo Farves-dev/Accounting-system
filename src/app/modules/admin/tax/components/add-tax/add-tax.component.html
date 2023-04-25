@@ -1,0 +1,86 @@
+<section
+    class="m-5 sm:m-10 p-4 sm:p-6 bg-white rounded-lg w-full flex flex-col gap-4"
+>
+    <!-- Breadcrumb -->
+    <div class="sm:flex hidden gap-2 items-center">
+        <mat-icon
+            class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
+            svgIcon="heroicons_outline:home"
+            (click)="navigateToHome()"
+        >
+        </mat-icon>
+        <p>Tax</p>
+        <span>/</span>
+        <p class="font-semibold text-myAccent">Add Tax</p>
+    </div>
+
+    <!-- Title -->
+    <h3 class="font-bold text-[1.5rem] text-center sm:text-left">Add Tax</h3>
+
+    <!-- Content -->
+    <form
+        class="p-4 sm:p-8 shadow-md rounded-md flex flex-col gap-10 items-center justify-between"
+    >
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full justify-center"
+        >
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="tax-name"
+                    >Tax Name <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="tax-name"
+                    type="text"
+                    placeholder="Enter Tax Name"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+                <label for="tax-type" class="font-medium"
+                    >Account Type <span class="text-red-600">*</span></label
+                >
+                <mat-form-field class="w-full mt-0">
+                    <mat-select
+                        #clubs
+                        matInfix
+                        disableOptionCentering
+                        placeholder="Select Tax Type"
+                    >
+                        <mat-option
+                            *ngFor="let type of taxType"
+                            [value]="type.id"
+                            >{{ type.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="flex items-center justify-center w-full">
+                <mat-form-field class="w-full">
+                    <mat-label id="tax-type"
+                        >Select Tax Type
+                        <span class="text-red-600">*</span></mat-label
+                    >
+                    <mat-select
+                        matInfix
+                        disableOptionCentering
+                        placeholder="Select Tax Type"
+                    >
+                        <mat-option
+                            *ngFor="let type of taxType"
+                            [value]="type.id"
+                            >{{ type.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+        </div>
+        <button
+            type="submit"
+            class="py-2 px-10 rounded text-white transition-all hover:bg-accentHover bg-myAccent w-fit"
+        >
+            Add Tax
+        </button>
+    </form>
+</section>

@@ -1,0 +1,340 @@
+<section
+    class="m-5 sm:m-10 p-4 sm:py-6 sm:px-8 bg-white rounded-lg w-full flex flex-col gap-4 overflow-x-hidden"
+>
+    <div class="flex flex-col gap-2 justify-items-start">
+        <!-- Breadcrumb -->
+        <div class="sm:flex hidden gap-2 items-center">
+            <mat-icon
+                class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
+                svgIcon="heroicons_outline:home"
+                (click)="navigateToHome()"
+            >
+            </mat-icon>
+            <p>Income</p>
+            <span>/</span>
+            <p class="font-semibold text-myAccent">Income Category</p>
+        </div>
+
+        <!-- Title -->
+        <h3 class="font-bold text-[1.3rem]">Income Category</h3>
+    </div>
+
+    <!-- Content -->
+    <div
+        class="flex w-full flex-col md:flex-row gap-4 justify-center items-center"
+    >
+        <!-- Search -->
+        <div
+            class="border border-myAccent w-full flex items-center justify-between rounded pr-2"
+        >
+            <input
+                type="search"
+                name="incomeCategory-search"
+                id="incomeCategory-search"
+                placeholder="Search Category"
+                class="px-4 py-2 rounded caret-myAccent"
+            />
+
+            <mat-icon
+                class="text-myAccent w-[24px] h-[24px] cursor-pointer search-icon"
+                svgIcon="heroicons_outline:search"
+            ></mat-icon>
+        </div>
+
+        <mat-form-field appearance="fill" class="mt-0 w-full">
+            <mat-date-range-input
+                [rangePicker]="picker"
+                placeholder="Select Date"
+            >
+                <input matStartDate placeholder="Start date" />
+                <input matEndDate placeholder="End date" />
+            </mat-date-range-input>
+
+            <mat-datepicker-toggle
+                class="text-myAccent w-7"
+                matIconSuffix
+                [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+        <button
+            class="bg-myAccent px-4 text-white py-2 w-fit whitespace-nowrap rounded hover:bg-accentHover justify-between transition-all flex items-center gap-2"
+            (click)="openAddDialog()"
+        >
+            <p class="">Add Income category</p>
+            <mat-icon
+                class="text-white w-[24px] h-[24px] px-0"
+                svgIcon="heroicons_outline:plus"
+            ></mat-icon>
+        </button>
+    </div>
+
+    <!-- Dynamic Table -->
+    <!-- <div class="subpixel-antialiased py-4">
+        <div class="container space-y-8 text-md mx-auto">
+            <div class="space-y-2">
+                <div
+                    class="bg-white shadow-lg hover:shadow-xl rounded-md overflow-hidden"
+                >
+                    <table
+                        class="table text-center sm:text-left table-auto w-full leading-normal"
+                    >
+                        <thead
+                            class="uppercase text-black font-bold bg-[#F4F4F4]"
+                        >
+                            <tr class="hidden sm:table-row">
+                                <th class="text-left p-3">
+                                    <p>SN</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Category Name</p>
+                                </th>
+                                <th class="text-right p-3">
+                                    <p>Actions</p>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="flex-1 sm:flex-none">
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                                *ngFor="
+                                    let category of incomeCategory;
+                                    index as i
+                                "
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >No.</label
+                                    >
+                                    <p class="">{{ i + 1 }}</p>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Category Name</label
+                                    >
+                                    <p class="">{{ category.categoryName }}</p>
+                                </td>
+                                <td class="p-1 sm:p-3 sm:text-right">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Actions</label
+                                    >
+                                    <div
+                                        class="flex gap-2 justify-center sm:justify-end"
+                                    >
+                                        <button  matTooltip="Edit Category">
+                                            <mat-icon
+                                                class="text-green-600"
+                                                svgIcon="mat_outline:edit"
+                                            ></mat-icon>
+                                        </button>
+                                        <button (click)="openDeleteDialog()" matTooltip="Delete Category">
+                                            <mat-icon
+                                                class="text-red-600"
+                                                svgIcon="mat_outline:delete"
+                                            ></mat-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- static table -->
+    <div class="subpixel-antialiased py-4">
+        <div class="container space-y-8 text-md mx-auto">
+            <div class="space-y-2">
+                <div
+                    class="bg-white shadow-lg hover:shadow-xl rounded-md overflow-hidden"
+                >
+                    <table
+                        class="table text-center sm:text-left table-auto w-full leading-normal"
+                    >
+                        <thead
+                            class="uppercase text-black font-bold bg-[#F1F5F9]"
+                        >
+                            <tr class="hidden sm:table-row">
+                                <th class="text-left p-3">
+                                    <p>SN</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Category Name</p>
+                                </th>
+                                <th class="text-right p-3">
+                                    <p>Actions</p>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="flex-1 sm:flex-none">
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >SN</label
+                                    >
+                                    <p class="">1</p>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Category Name</label
+                                    >
+                                    <p class="">Salary</p>
+                                </td>
+                                <td class="p-1 sm:p-3 sm:text-right">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Actions</label
+                                    >
+                                    <div
+                                        class="flex gap-2 justify-center sm:justify-end"
+                                    >
+                                        <button matTooltip="Edit Category">
+                                            <mat-icon
+                                                class="text-green-600"
+                                                svgIcon="mat_outline:edit"
+                                            ></mat-icon>
+                                        </button>
+                                        <button
+                                            (click)="openDeleteDialog()"
+                                            matTooltip="Delete Category"
+                                        >
+                                            <mat-icon
+                                                class="text-red-600"
+                                                svgIcon="mat_outline:delete"
+                                            ></mat-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >No.</label
+                                    >
+                                    <p class="">2</p>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Category Name</label
+                                    >
+                                    <p class="">Part-time</p>
+                                </td>
+                                <td class="p-1 sm:p-3 sm:text-right">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Actions</label
+                                    >
+                                    <div
+                                        class="flex gap-2 justify-center sm:justify-end"
+                                    >
+                                        <button matTooltip="Edit Category">
+                                            <mat-icon
+                                                class="text-green-600"
+                                                svgIcon="mat_outline:edit"
+                                            ></mat-icon>
+                                        </button>
+                                        <button
+                                            (click)="openDeleteDialog()"
+                                            matTooltip="Delete Category"
+                                        >
+                                            <mat-icon
+                                                class="text-red-600"
+                                                svgIcon="mat_outline:delete"
+                                            ></mat-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >No.</label
+                                    >
+                                    <p class="">3</p>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Category Name</label
+                                    >
+                                    <p class="">Travel</p>
+                                </td>
+                                <td class="p-1 sm:p-3 sm:text-right">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Actions</label
+                                    >
+                                    <div
+                                        class="flex gap-2 justify-center sm:justify-end"
+                                    >
+                                        <button matTooltip="Edit Category">
+                                            <mat-icon
+                                                class="text-green-600"
+                                                svgIcon="mat_outline:edit"
+                                            ></mat-icon>
+                                        </button>
+                                        <button
+                                            (click)="openDeleteDialog()"
+                                            matTooltip="Delete Category"
+                                        >
+                                            <mat-icon
+                                                class="text-red-600"
+                                                svgIcon="mat_outline:delete"
+                                            ></mat-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                        <!-- Pagination -->
+                        <mat-paginator
+                            class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
+                            [pageSizeOptions]="[5, 10, 25, 100]"
+                            [showFirstLastButtons]="true"
+                        ></mat-paginator>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

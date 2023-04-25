@@ -1,0 +1,25 @@
+<mat-dialog-content class="mat-typography">
+    <h2 mat-dialog-title>Create Category</h2>
+    <mat-form-field class="w-full">
+        <input
+            matInput
+            type="text"
+            placeholder="Enter Category Name"
+            class="mat-category-input"
+        />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button
+        class="border border-myAccent text-myAccent bg-transparent rounded px-4 py-2"
+        mat-dialog-close
+    >
+        Cancel
+    </button>
+    <button
+        class="bg-myAccent text-white border border-myAccent hover:bg-accentHover transition rounded px-4 py-2"
+        cdkFocusInitial
+    >
+        Add
+    </button>
+</mat-dialog-actions>

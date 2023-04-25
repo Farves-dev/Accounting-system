@@ -1,0 +1,1174 @@
+<section
+    class="m-5 sm:m-10 p-4 sm:py-6 w-full sm:px-8 bg-white rounded-lg flex flex-col gap-4 overflow-x-hidden"
+>
+    <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-2 justify-items-start">
+            <!-- Breadcrumb -->
+            <div class="sm:flex hidden gap-2 items-center">
+                <mat-icon
+                    class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
+                    svgIcon="heroicons_outline:home"
+                    (click)="navigateToHome()"
+                >
+                </mat-icon>
+                <p>Roles and Permissions</p>
+                <span>/</span>
+                <p class="font-semibold text-myAccent">Add Role</p>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-bold text-[1.3rem]">Add Role</h3>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <mat-checkbox>Select All</mat-checkbox>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-2 w-[15rem]">
+        <label class="font-medium" for="role-name">Role Name</label>
+        <input
+            id="role-name"
+            type="text"
+            placeholder="Enter Name"
+            class="border border-myAccent p-2 rounded"
+        />
+    </div>
+
+    <!-- Table -->
+    <div class="subpixel-antialiased py-4 w-full h-full overflow-y-auto">
+        <div class="container space-y-8 text-md mx-auto">
+            <div class="space-y-2">
+                <div class="bg-white rounded-md overflow-hidden">
+                    <table
+                        class="table text-center sm:text-left table-auto w-full leading-normal"
+                    >
+                        <thead
+                            class="uppercase text-center text-black font-bold bg-[#F1F5F9]"
+                        >
+                            <tr class="hidden sm:table-row space-x-10">
+                                <th class="text-left p-3">
+                                    <p>Privileges</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>View</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Create</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Edit</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Delete</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="flex-1 sm:flex-none">
+                            <tr
+                                disabled
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="font-bold text-black">
+                                        Dashboard
+                                    </p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="font-bold">Income</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Add Income</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Income Categories</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="font-bold">Expense</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Add Expense</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Expense Categories</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="font-bold">Accounts</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">New Account</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Manage Accounts</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Transactions</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Profit and Loss</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="font-bold">Tax</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Add Tax</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Manage Tax</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Tax Statement</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="font-bold">Reports</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Income Report</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Expense Report</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Tax Report</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Account Statement</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="font-bold">
+                                        Roles and Permissions
+                                    </p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox disabled></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">New User</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Manage Users</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 sm:p-3 sm:table-row flex-col w-full"
+                            >
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Privileges</label
+                                    >
+                                    <p class="">Manage Roles</p>
+                                </td>
+
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >View</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Create</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Edit</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                                <td class="p-1 sm:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold sm:hidden"
+                                        for=""
+                                        >Delete</label
+                                    ><mat-checkbox></mat-checkbox>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <mat-paginator
+                        class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
+                        [pageSizeOptions]="[5, 10, 25, 100]"
+                        [showFirstLastButtons]="true"
+                    ></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex gap-6 items-center justify-end py-4">
+        <button
+            class="border border-myAccent text-myAccent bg-transparent rounded px-4 py-2"
+        >
+            Cancel
+        </button>
+        <button
+            class="bg-myAccent text-white border border-myAccent hover:bg-accentHover transition rounded px-4 py-2"
+        >
+            Add Role
+        </button>
+    </div>
+</section>

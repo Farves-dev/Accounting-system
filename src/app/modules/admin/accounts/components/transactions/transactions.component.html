@@ -1,0 +1,395 @@
+<section
+    class="m-5 lg:m-10 p-4 lg:py-6 w-full lg:px-8 bg-white rounded-lg flex flex-col gap-4 overflow-x-hidden"
+>
+    <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-2 justify-items-start">
+            <!-- Breadcrumb -->
+            <div class="lg:flex hidden gap-2 items-center">
+                <mat-icon
+                    class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
+                    svgIcon="heroicons_outline:home"
+                    (click)="navigateToHome()"
+                >
+                </mat-icon>
+                <p>Accounts</p>
+                <span>/</span>
+                <p
+                    (click)="navigateToManageAccount()"
+                    class="font-semibold text-myAccent"
+                >
+                    Manage Accounts
+                </p>
+                <span>/</span>
+                <p class="font-semibold text-myAccent">Transactions</p>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-bold text-[1.3rem]">Transactions</h3>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <svg
+                matTooltip="Export as PDF"
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                width="35px"
+                height="35px"
+                viewBox="0 0 100.000000 100.000000"
+                preserveAspectRatio="xMidYMid meet"
+                class="fill-black hover:fill-myAccent transition cursor-pointer"
+            >
+                <g
+                    transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
+                    stroke="none"
+                >
+                    <path
+                        d="M140 500 l0 -460 360 0 360 0 0 328 -1 327 -138 133 -139 132 -221 0
+-221 0 0 -460z m420 290 l0 -130 130 0 130 0 0 -290 0 -290 -320 0 -320 0 0
+420 0 420 190 0 190 0 0 -130z m185 -39 l49 -51 -97 0 -97 0 0 91 0 91 48 -40
+c26 -22 69 -63 97 -91z"
+                    />
+                    <path
+                        d="M438 575 c-9 -20 -8 -33 5 -65 17 -44 13 -69 -22 -138 -12 -24 -34
+-48 -54 -58 -67 -34 -87 -73 -48 -94 29 -15 29 -14 81 39 37 38 62 54 105 66
+51 15 59 15 90 1 42 -20 69 -20 89 0 38 38 7 67 -65 62 -50 -3 -53 -2 -86 39
+-33 40 -34 43 -22 82 9 31 9 47 1 66 -16 34 -58 34 -74 0z m81 -199 c-2 -2
+-16 -7 -31 -11 -27 -7 -27 -6 -15 24 11 31 11 31 31 11 11 -11 18 -21 15 -24z"
+                    />
+                </g>
+            </svg>
+
+            <svg
+                matTooltip="Export as Excel"
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                width="35px"
+                height="35px"
+                viewBox="0 0 100.000000 100.000000"
+                preserveAspectRatio="xMidYMid meet"
+                class="fill-black hover:fill-myAccent transition cursor-pointer"
+            >
+                <g
+                    transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
+                    stroke="none"
+                >
+                    <path
+                        d="M285 945 c-148 -30 -273 -54 -277 -54 -5 -1 -8 -176 -8 -390 l0 -389
+23 -5 c92 -23 560 -106 568 -102 5 4 9 31 9 61 l0 54 178 0 c125 0 182 4 190
+12 17 17 17 719 0 736 -8 8 -65 12 -190 12 l-177 0 -3 58 c-3 49 -6 57 -23 59
+-11 0 -141 -23 -290 -52z m275 -444 l0 -458 -137 27 c-76 15 -193 38 -260 50
+l-123 22 0 358 0 358 123 22 c100 19 385 75 395 79 1 1 2 -205 2 -458z m380
+-1 l0 -340 -170 0 -170 0 0 50 0 50 40 0 c33 0 40 3 40 20 0 17 -7 20 -40 20
+l-40 0 0 60 0 60 40 0 c33 0 40 3 40 20 0 17 -7 20 -40 20 l-40 0 0 50 0 50
+40 0 c33 0 40 3 40 20 0 17 -7 20 -40 20 l-40 0 0 50 0 50 40 0 c33 0 40 3 40
+20 0 17 -7 20 -40 20 l-40 0 0 50 0 50 170 0 170 0 0 -340z"
+                    />
+                    <path
+                        d="M140 684 c0 -4 23 -47 51 -96 l51 -89 -56 -88 c-31 -49 -56 -92 -56
+-95 0 -4 21 -6 48 -4 l47 3 36 69 37 70 36 -72 36 -72 51 0 51 0 -23 38 c-12
+20 -38 61 -56 90 -18 29 -33 57 -33 62 0 5 22 46 50 92 27 46 50 86 50 91 0 4
+-19 7 -43 7 l-43 0 -36 -70 -37 -70 -33 67 -33 68 -47 3 c-27 2 -48 0 -48 -4z"
+                    />
+                    <path
+                        d="M720 720 c0 -18 7 -20 80 -20 73 0 80 2 80 20 0 18 -7 20 -80 20 -73
+0 -80 -2 -80 -20z"
+                    />
+                    <path
+                        d="M720 580 c0 -18 7 -20 80 -20 73 0 80 2 80 20 0 18 -7 20 -80 20 -73
+0 -80 -2 -80 -20z"
+                    />
+                    <path
+                        d="M720 440 c0 -18 7 -20 80 -20 73 0 80 2 80 20 0 18 -7 20 -80 20 -73
+0 -80 -2 -80 -20z"
+                    />
+                    <path
+                        d="M720 280 c0 -18 7 -20 80 -20 73 0 80 2 80 20 0 18 -7 20 -80 20 -73
+0 -80 -2 -80 -20z"
+                    />
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div
+        class="flex w-full flex-col md:flex-row gap-4 justify-center items-center"
+    >
+        <!-- Search -->
+        <div
+            class="border border-myAccent w-full flex items-center justify-between rounded pr-2"
+        >
+            <input
+                type="search"
+                name="account-search"
+                id="account-search"
+                placeholder="Search "
+                class="px-4 py-2 rounded caret-myAccent"
+            />
+
+            <mat-icon
+                class="text-myAccent w-[24px] h-[24px] cursor-pointer search-icon"
+                svgIcon="heroicons_outline:search"
+            ></mat-icon>
+        </div>
+
+        <mat-form-field appearance="fill" class="mt-0 w-full">
+            <mat-date-range-input
+                [rangePicker]="picker"
+                placeholder="Select Date"
+            >
+                <input matStartDate placeholder="Start date" />
+                <input matEndDate placeholder="End date" />
+            </mat-date-range-input>
+
+            <mat-datepicker-toggle
+                class="text-myAccent w-7"
+                matIconSuffix
+                [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+    </div>
+
+    <!-- Table -->
+    <div class="subpixel-antialiased py-4 w-full">
+        <div class="container space-y-8 text-md mx-auto">
+            <div class="space-y-2">
+                <div
+                    class="bg-white shadow-lg hover:shadow-xl rounded-md overflow-hidden"
+                >
+                    <table
+                        class="table text-center lg:text-left table-auto w-full leading-normal"
+                    >
+                        <thead
+                            class="uppercase text-center text-black font-bold bg-[#F1F5F9]"
+                        >
+                            <tr
+                                class="hidden text-left lg:table-row space-x-10"
+                            >
+                                <th class="text-left p-3">
+                                    <p>SN</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Holder Name</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Payment Mode</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Date</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Credit Amount</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Debit Amount</p>
+                                </th>
+                                <th class="text-left p-3">
+                                    <p>Description</p>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="flex-1 lg:flex-none">
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 lg:p-3 lg:table-row flex-col w-full"
+                            >
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >SN</label
+                                    >
+                                    <p class="">1</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Holder Name</label
+                                    >
+                                    <p class="">Farves Safiyudeen</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Payment Mode</label
+                                    >
+                                    <p class="">Gpay</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Date</label
+                                    >
+                                    <p class="">18/04/2023</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Credit Amount</label
+                                    >
+                                    <p class="">2000</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >debit Amount</label
+                                    >
+                                    <p class="">-</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Description</label
+                                    >
+                                    <p class="">This is for Event Organizing</p>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 lg:p-3 lg:table-row flex-col w-full"
+                            >
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >SN</label
+                                    >
+                                    <p class="">2</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Holder Name</label
+                                    >
+                                    <p class="">Mohamed Nawasudeen</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Payment Mode</label
+                                    >
+                                    <p class="">Credit Card</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Date</label
+                                    >
+                                    <p class="">18/04/2023</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Credit Amount</label
+                                    >
+                                    <p class="">-</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >debit Amount</label
+                                    >
+                                    <p class="">500</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Description</label
+                                    >
+                                    <p class="">This is for Travel</p>
+                                </td>
+                            </tr>
+                            <tr
+                                v-for="(person, index) in persons"
+                                :key="index"
+                                class="border-t first:border-t-0 flex p-1 lg:p-3 lg:table-row flex-col w-full"
+                            >
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >SN</label
+                                    >
+                                    <p class="">2</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Holder Name</label
+                                    >
+                                    <p class="">Mohamed Mushary</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Payment Mode</label
+                                    >
+                                    <p class="">Debit Card</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Date</label
+                                    >
+                                    <p class="">18/04/2023</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Credit Amount</label
+                                    >
+                                    <p class="">1500</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >debit Amount</label
+                                    >
+                                    <p class="">-</p>
+                                </td>
+                                <td class="p-1 lg:p-3">
+                                    <label
+                                        class="text-black uppercase font-bold lg:hidden"
+                                        for=""
+                                        >Description</label
+                                    >
+                                    <p class="">
+                                        This is for Construction Materials
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <mat-paginator
+                        class="sm:absolute sm:inset-x-0 sm:bottom-0 border-b sm:border-t sm:border-b-0 z-10 bg-gray-50 dark:bg-transparent"
+                        [pageSizeOptions]="[5, 10, 25, 100]"
+                        [showFirstLastButtons]="true"
+                    ></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+:root {
+    --myAccent: #863a6f;
+    --accentHover: #62224e;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+body.light .mat-calendar-body-in-range::before {
+    background: var(--myAccent);
+    opacity: 50%;
+}
+
+body.light
+    .mat-radio-button.mat-accent.mat-radio-checked
+    .mat-radio-outer-circle {
+    border-color: var(--myAccent);
+}
+
+body.light .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background: var(--myAccent);
+}
+
+body.light .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background: var(--myAccent);
+}

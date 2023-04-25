@@ -1,0 +1,111 @@
+<section
+    class="m-5 lg:m-10 p-4 lg:py-6 w-full lg:px-8 bg-white rounded-lg flex flex-col gap-4 overflow-x-hidden"
+>
+    <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-2 justify-items-start">
+            <!-- Breadcrumb -->
+            <div class="lg:flex hidden gap-2 items-center">
+                <mat-icon
+                    class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
+                    svgIcon="heroicons_outline:home"
+                    (click)="navigateToHome()"
+                >
+                </mat-icon>
+                <p>Accounts</p>
+                <span>/</span>
+                <p class="font-semibold text-myAccent">Profit and Loss</p>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-bold text-[1.3rem]">Profit and Loss</h3>
+        </div>
+    </div>
+
+    <!-- Content -->
+
+    <mat-form-field appearance="fill" class="mt-4 w-full sm:w-[25rem]">
+        <mat-date-range-input [rangePicker]="picker" placeholder="Select Date">
+            <input matStartDate placeholder="Start date" />
+            <input matEndDate placeholder="End date" />
+        </mat-date-range-input>
+
+        <mat-datepicker-toggle
+            class="text-myAccent w-7"
+            matIconSuffix
+            [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <div
+        class="flex flex-col lg:flex-row items-center justify-between mt-4 gap-[5rem]"
+    >
+        <div
+            class="bg-[#BEDFFF] rounded-[1rem] border border-[#0081FF] flex flex-col-reverse gap-4 sm:flex-row items-center justify-between px-8 py-10 w-full shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
+        >
+            <div
+                class="flex flex-col items-center justify-center rounded-full bg-[#8BC6FF] shadow-[inset_-12px_-8px_40px_rgba(0,_0,_0,_0.24)] py-4 px-8 sm:py-6 sm:px-12"
+            >
+                <p class="font-bold text-lg">Total Income</p>
+                <p class="font-bold text-lg">$2000</p>
+            </div>
+
+            <img
+                src="../../../../../../assets/images/logo/income.png"
+                alt="Total Income"
+                class="w-[70px] sm:w-[100px]"
+            />
+        </div>
+        <div
+            class="bg-[#FFE5CB] rounded-[1rem] border border-[#FF8100] flex flex-col-reverse gap-4 sm:flex-row items-center justify-between px-8 py-10 w-full shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
+        >
+            <div
+                class="flex flex-col items-center justify-center rounded-full bg-[#FFCE9A] shadow-[inset_-12px_-8px_40px_rgba(0,_0,_0,_0.24)] py-4 px-8 sm:py-6 sm:px-12"
+            >
+                <p class="font-bold text-lg">Total Expense</p>
+                <p class="font-bold text-lg">$1000</p>
+            </div>
+
+            <img
+                src="../../../../../../assets/images/logo/expense.png"
+                alt="Total Income"
+                class="w-[70px] sm:w-[100px]"
+            />
+        </div>
+    </div>
+
+    <div
+        class="bg-[#C2FFC5] mx-auto mt-[3rem] rounded-[1rem] border border-[#039E00] flex flex-col-reverse gap-4 sm:flex-row items-center justify-between px-8 py-10 w-full lg:w-1/2 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
+    >
+        <div
+            class="flex flex-col items-center justify-center rounded-full bg-[#85E489] shadow-[inset_-12px_-8px_40px_rgba(0,_0,_0,_0.24)] py-4 px-8 sm:py-6 sm:px-12"
+        >
+            <p class="font-bold text-lg">Profit</p>
+            <p class="font-bold text-lg">$1000</p>
+        </div>
+
+        <img
+            src="../../../../../../assets/images/logo/profit.png"
+            alt="Total Income"
+            class="w-[70px] sm:w-[100px]"
+        />
+    </div>
+
+    <!-- Loss card -->
+    <!-- <div
+        class="bg-[#FFB9B9] mx-auto mt-[3rem] rounded-[1rem] border border-[#F90000] flex flex-col-reverse gap-4 sm:flex-row items-center justify-between px-8 py-10 w-full lg:w-1/2 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
+    >
+        <div
+            class="flex flex-col items-center justify-center rounded-full bg-[#F98E8E] shadow-[inset_-12px_-8px_40px_rgba(0,_0,_0,_0.24)] py-4 px-8 sm:py-6 sm:px-12"
+        >
+            <p class="font-bold text-lg">Profit</p>
+            <p class="font-bold text-lg">$1000</p>
+        </div>
+
+        <img
+            src="../../../../../../assets/images/logo/profit.png"
+            alt="Total Income"
+            class="w-[70px] sm:w-[100px]"
+        />
+    </div> -->
+</section>

@@ -1,0 +1,265 @@
+<section
+    class="m-5 sm:m-10 p-4 sm:p-6 bg-white rounded-lg w-full flex flex-col gap-4"
+>
+    <!-- Breadcrumb -->
+    <div class="sm:flex hidden gap-2 items-center">
+        <mat-icon
+            class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
+            svgIcon="heroicons_outline:home"
+            (click)="navigateToHome()"
+        >
+        </mat-icon>
+        <p>Income</p>
+        <span>/</span>
+        <p class="font-semibold text-myAccent">Add Expense</p>
+    </div>
+
+    <!-- Title -->
+    <h3 class="font-bold text-[1.5rem] text-center sm:text-left">
+        Add Expense
+    </h3>
+
+    <!-- Content -->
+    <!-- <form
+        class="p-4 sm:p-8 shadow-md rounded-md flex flex-col gap-10 items-center justify-between"
+    >
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full justify-center"
+        >
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="amount"
+                    >Amount <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="amount"
+                    type="number"
+                    placeholder="Enter Amount"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <mat-form-field appearance="fill" class="w-full mt-7">
+                <input
+                    matInput
+                    [matDatepicker]="picker"
+                    placeholder="Select Date"
+                />
+                <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker"
+                    class="text-myAccent w-7"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="description">
+                    Description <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="description"
+                    type="text"
+                    placeholder="Enter Description"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <div class="flex items-center justify-center w-full">
+                <mat-form-field class="w-full">
+                    <mat-label id="incomeCategory"
+                        >Select Category
+                        <span class="text-red-600">*</span></mat-label
+                    >
+                    <mat-select
+                        matInfix
+                        disableOptionCentering
+                        placeholder="Select Category"
+                    >
+                        <mat-option
+                            *ngFor="let cl of clubsListSlice"
+                            [value]="cl.id"
+                            >{{ cl.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="description">Tax</label>
+                <input
+                    id="description"
+                    type="number"
+                    placeholder="Enter Tax Amount"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+            <div class="flex flex-col gap-2 w-fit">
+                <label class="font-medium" for="description"
+                    >Upload Receipt</label
+                >
+                <input
+                    id="description"
+                    type="file"
+                    class="file:border-myAccent file:bg-transparent file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-[1px] hover:file:bg-myAccent hover:file:text-white file:text-myAccent file:transition-all"
+                />
+            </div>
+        </div>
+        <button
+            type="submit"
+            class="py-2 px-10 rounded text-white transition-all hover:bg-accentHover bg-myAccent w-fit"
+        >
+            Add Expense
+        </button>
+    </form> -->
+
+    <form
+        class="p-4 sm:p-8 shadow-md rounded-md flex flex-col gap-10 items-center justify-between"
+    >
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full justify-center"
+        >
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="amount"
+                    >Total Amount <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="amount"
+                    type="number"
+                    placeholder="Enter Amount"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="description">
+                    Description</label
+                >
+                <input
+                    id="description"
+                    type="text"
+                    placeholder="Enter Description"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="date" class="font-medium"
+                    >Date <span class="text-red-600">*</span></label
+                >
+                <mat-form-field appearance="fill" class="w-full">
+                    <input
+                        matInput
+                        [matDatepicker]="picker"
+                        placeholder="Select Date"
+                    />
+
+                    <!--[value]="todayDate"  -->
+                    <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="picker"
+                        class="text-myAccent w-7"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+                <label for="incomeCategory" class="font-medium"
+                    >Income Category <span class="text-red-600">*</span></label
+                >
+                <mat-form-field class="w-full mt-1">
+                    <mat-select
+                        #clubs
+                        matInfix
+                        disableOptionCentering
+                        placeholder="Select Category"
+                    >
+                        <mat-option
+                            *ngFor="let cl of clubsListSlice"
+                            [value]="cl.id"
+                            >{{ cl.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+                <label for="tax" class="font-medium"
+                    >Tax <span class="text-red-600">*</span></label
+                >
+                <div
+                    class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
+                >
+                    <mat-checkbox (change)="toggleTaxInput()" class=""
+                        >Tax Applicable</mat-checkbox
+                    >
+
+                    <mat-radio-group
+                        aria-label="Select an option"
+                        class="flex flex-col lg:flex-row items-start justify-between gap-8"
+                    >
+                        <mat-radio-button
+                            class="accent-myAccent"
+                            [checked]="!textInputDisabled"
+                            value="include"
+                            >Including Tax</mat-radio-button
+                        >
+                        <mat-radio-button
+                            class="accent-myAccent"
+                            value="exclude"
+                            >Excluding Tax</mat-radio-button
+                        >
+                    </mat-radio-group>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="tax-rate"
+                    >Tax Rate <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="tax-rate"
+                    type="number"
+                    placeholder="Enter Tax Rate"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+                <label for="tax-type" class="font-medium"
+                    >Tax Type <span class="text-red-600">*</span></label
+                >
+                <mat-form-field class="w-full mt-0">
+                    <mat-select
+                        #clubs
+                        matInfix
+                        disableOptionCentering
+                        placeholder="Select Tax Type"
+                    >
+                        <mat-option
+                            *ngFor="let cl of clubsListSlice"
+                            [value]="cl.id"
+                            >{{ cl.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="flex flex-col gap-2 w-fit">
+                <label class="font-medium" for="description"
+                    >Upload Receipt</label
+                >
+                <input
+                    id="description"
+                    type="file"
+                    class="file:border-myAccent file:bg-transparent file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-[1px] hover:file:bg-myAccent hover:file:text-white file:text-myAccent file:transition-all"
+                />
+            </div>
+        </div>
+        <button
+            type="button"
+            (click)="openCollectDialog()"
+            class="py-2 px-10 rounded text-white transition-all hover:bg-accentHover bg-myAccent w-fit"
+        >
+            Add Expense
+        </button>
+    </form>
+</section>

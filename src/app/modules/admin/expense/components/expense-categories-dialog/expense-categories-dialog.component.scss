@@ -1,0 +1,16 @@
+mat-dialog-actions button.mat-btn-cancel {
+    border: 1px solid #863a6f;
+    color: #863a6f;
+    border-radius: 0.25rem !important;
+}
+
+mat-dialog-actions button.mat-btn-cancel:hover {
+    background-color: white !important;
+}
+
+mat-dialog-actions button.mat-btn-add {
+    background-color: #863a6f;
+    color: #ffffff;
+    border: 1px solid #863a6f;
+    border-radius: 0.25rem !important;
+}
