@@ -90,6 +90,7 @@ const config = {
         },
         screens: {
             sm: "600px",
+            sm750: "758px",
             md: "960px",
             lg: "1280px",
             xl: "1440px",

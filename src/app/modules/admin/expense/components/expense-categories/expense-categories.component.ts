@@ -7,6 +7,30 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 import { IncomeCategoriesDialogComponent } from 'app/modules/admin/income/components/income-categories-dialog/income-categories-dialog.component';
 import { ExpenseCategory } from 'app/shared/modals/expense-category';
 
+export interface ExpenseCategories {
+    position: number;
+    categoryName: string;
+    imgUrl: string;
+}
+
+const ELEMENT_DATA: ExpenseCategories[] = [
+    {
+        position: 1,
+        categoryName: 'Salaries',
+        imgUrl: 'assets/images/salary.png',
+    },
+    {
+        position: 2,
+        categoryName: 'Utilities',
+        imgUrl: 'assets/images/utilities.png',
+    },
+    {
+        position: 3,
+        categoryName: 'Rent',
+        imgUrl: 'assets/images/rent.png',
+    },
+];
+
 @Component({
     selector: 'app-expense-categories',
     templateUrl: './expense-categories.component.html',
@@ -18,6 +42,9 @@ export class ExpenseCategoriesComponent implements OnInit {
         private router: Router,
         private commonService: CommonService
     ) {}
+
+    displayedColumns: string[] = ['position', 'categoryName', 'actions'];
+    dataSource = ELEMENT_DATA;
 
     expenseCategoryModal: ExpenseCategory = new ExpenseCategory();
     expenseResult: any;

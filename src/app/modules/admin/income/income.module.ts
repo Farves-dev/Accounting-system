@@ -10,6 +10,9 @@ import { MaterialExampleModule } from 'app/material.module';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { DatePipe } from '@angular/common';
 import { CollectDialogComponent } from './components/collect-dialog/collect-dialog.component';
+import { ManageIncomeComponent } from './components/manage-income/manage-income.component';
+import { ReceiptDialogComponent } from './components/receipt-dialog/receipt-dialog.component';
+import { PaymentDialogComponent } from './components/payment-dialog/payment-dialog.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +21,9 @@ import { CollectDialogComponent } from './components/collect-dialog/collect-dial
         IncomeCategoriesDialogComponent,
         DeleteDialogComponent,
         CollectDialogComponent,
+        ManageIncomeComponent,
+        ReceiptDialogComponent,
+        PaymentDialogComponent,
     ],
     imports: [
         CommonModule,

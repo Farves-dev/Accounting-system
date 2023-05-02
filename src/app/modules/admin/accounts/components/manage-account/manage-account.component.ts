@@ -6,6 +6,26 @@ import { Router } from '@angular/router';
 import { ShowDialogComponent } from '../show-dialog/show-dialog.component';
 import { NewAccountComponent } from '../new-account/new-account.component';
 
+export interface ManageAccounts {
+    position: number;
+    holderName: string;
+}
+
+const ELEMENT_DATA: ManageAccounts[] = [
+    {
+        position: 1,
+        holderName: 'Sales Revenue',
+    },
+    {
+        position: 2,
+        holderName: 'Interest Revenue',
+    },
+    {
+        position: 3,
+        holderName: 'Commission Revenue',
+    },
+];
+
 @Component({
     selector: 'app-manage-account',
     templateUrl: './manage-account.component.html',
@@ -19,6 +39,9 @@ export class ManageAccountComponent implements OnInit {
         private changeDetection: ChangeDetectorRef,
         public newAccount: NewAccountComponent
     ) {}
+
+    displayedColumns: string[] = ['position', 'holderName'];
+    dataSource = ELEMENT_DATA;
 
     navigateToHome() {
         this.commonService.navigateToHome();
@@ -34,7 +57,7 @@ export class ManageAccountComponent implements OnInit {
     }
 
     addAccount() {
-        this.newAccount.isUpdate = false;
+        // this.newAccount.isUpdate = false;
         this.router.navigateByUrl('/accounts/new-account');
     }
 

@@ -34,3 +34,50 @@ body.light .mat-radio-button.mat-accent .mat-radio-inner-circle {
 body.light .mat-checkbox-checked.mat-accent .mat-checkbox-background {
     background: var(--myAccent);
 }
+
+::-webkit-scrollbar {
+    // width: 8px;
+    display: none;
+}
+
+// ::-webkit-scrollbar-track {
+//     box-shadow: inset 0 0 5px rgba(197, 197, 197, 0.521);
+// }
+
+// ::-webkit-scrollbar-thumb {
+//     background: #7fbfff;
+//     border-radius: 10px;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//     background: var(--accentHover);
+// }
+
+.mat-table {
+    // background: transparent !important;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+}
+
+table {
+    overflow-x: scroll !important;
+}
+
+.mat-header-cell {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+body.light .mat-header-cell {
+    color: #000;
+    background-color: #f1f5f9;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+    padding: 13px !important;
+}
+
+tr.mat-header-row {
+    height: 45px;
+}

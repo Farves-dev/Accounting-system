@@ -9,15 +9,20 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['./add-income.component.scss'],
 })
 export class AddIncomeComponent {
-    clubsListSlice = [
-        { name: 'Salary', id: '1' },
-        { name: 'part-time', id: '2' },
-        { name: 'Travel', id: '3' },
+    categories = [
+        { name: 'Sales Revenue', id: '1' },
+        { name: 'Interest Revenue', id: '2' },
+        { name: 'Commission Revenue', id: '3' },
     ];
     accounts = [
         { name: 'Farves', id: '1' },
         { name: 'Irsath', id: '2' },
         { name: 'Moosa', id: '3' },
+    ];
+
+    taxes = [
+        { name: 'GST', id: '1' },
+        { name: 'VAT', id: '2' },
     ];
 
     // Default Today Date for datepicker

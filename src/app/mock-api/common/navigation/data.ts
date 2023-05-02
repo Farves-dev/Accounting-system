@@ -22,6 +22,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link: '/income/add-income',
             },
             {
+                id: 'income.manageIncome',
+                title: 'Manage Income',
+                type: 'basic',
+                link: '/income/manage-income',
+            },
+            {
                 id: 'income.incomeCategories',
                 title: 'Income Categories',
                 type: 'basic',
@@ -40,6 +46,12 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'Add Expense',
                 type: 'basic',
                 link: '/expense/add-expense',
+            },
+            {
+                id: 'expense.manageExpense',
+                title: 'Manage Expense',
+                type: 'basic',
+                link: '/expense/manage-expense',
             },
             {
                 id: 'expense.expenseCategories',
@@ -172,13 +184,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
     //     icon: 'heroicons_outline:document-report',
     //     link: '/log',
     // },
-    // {
-    //     id: 'settings',
-    //     title: 'Settings',
-    //     type: 'basic',
-    //     icon: 'heroicons_outline:cog',
-    //     link: '/settings',
-    // },
+    //
 ];
 // export const compactNavigation: FuseNavigationItem[] = [
 //     {

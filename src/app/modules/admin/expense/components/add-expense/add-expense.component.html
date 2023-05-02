@@ -140,7 +140,7 @@
                     class="border border-myAccent p-2 rounded"
                 />
             </div>
-            <div class="flex flex-col gap-2">
+            <!-- <div class="flex flex-col gap-2">
                 <label for="date" class="font-medium"
                     >Date <span class="text-red-600">*</span></label
                 >
@@ -151,7 +151,7 @@
                         placeholder="Select Date"
                     />
 
-                    <!--[value]="todayDate"  -->
+                    [value]="todayDate"
                     <mat-datepicker-toggle
                         matIconSuffix
                         [for]="picker"
@@ -159,27 +159,7 @@
                     ></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
-            </div>
-
-            <div class="flex flex-col gap-2 w-full">
-                <label for="incomeCategory" class="font-medium"
-                    >Income Category <span class="text-red-600">*</span></label
-                >
-                <mat-form-field class="w-full mt-1">
-                    <mat-select
-                        #clubs
-                        matInfix
-                        disableOptionCentering
-                        placeholder="Select Category"
-                    >
-                        <mat-option
-                            *ngFor="let cl of clubsListSlice"
-                            [value]="cl.id"
-                            >{{ cl.name }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
+            </div> -->
 
             <div class="flex flex-col gap-2 w-full">
                 <label for="tax" class="font-medium"
@@ -211,7 +191,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-col gap-2">
+            <!-- <div class="flex flex-col gap-2">
                 <label class="font-medium" for="tax-rate"
                     >Tax Rate <span class="text-red-600">*</span></label
                 >
@@ -221,43 +201,68 @@
                     placeholder="Enter Tax Rate"
                     class="border border-myAccent p-2 rounded"
                 />
-            </div>
+            </div> -->
 
             <div class="flex flex-col gap-2 w-full">
                 <label for="tax-type" class="font-medium"
-                    >Tax Type <span class="text-red-600">*</span></label
+                    >Tax Type<span class="text-red-600">*</span></label
                 >
                 <mat-form-field class="w-full mt-0">
                     <mat-select
                         #clubs
                         matInfix
+                        [disabled]="textInputDisabled"
                         disableOptionCentering
                         placeholder="Select Tax Type"
                     >
-                        <mat-option
-                            *ngFor="let cl of clubsListSlice"
-                            [value]="cl.id"
-                            >{{ cl.name }}
+                        <mat-option *ngFor="let tax of taxes" [value]="tax.id"
+                            >{{ tax.name }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
 
-            <div class="flex flex-col gap-2 w-fit">
-                <label class="font-medium" for="description"
-                    >Upload Receipt</label
+            <div class="flex flex-col gap-2 w-full">
+                <label for="incomeCategory" class="font-medium"
+                    >Expense Category <span class="text-red-600">*</span></label
                 >
-                <input
-                    id="description"
-                    type="file"
-                    class="file:border-myAccent file:bg-transparent file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-[1px] hover:file:bg-myAccent hover:file:text-white file:text-myAccent file:transition-all"
-                />
+                <mat-form-field class="w-full mt-1">
+                    <mat-select
+                        #clubs
+                        matInfix
+                        disableOptionCentering
+                        placeholder="Select Category"
+                    >
+                        <mat-option
+                            *ngFor="let category of categories"
+                            [value]="category.id"
+                            >{{ category.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="flex items-end justify-between w-full">
+                <div class="flex flex-col gap-2 w-fit">
+                    <label class="font-medium" for="description"
+                        >Upload Receipt</label
+                    >
+                    <input
+                        id="description"
+                        type="file"
+                        class="file:border-myAccent file:bg-transparent file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-[1px] hover:file:bg-myAccent hover:file:text-white file:text-myAccent file:transition-all"
+                    />
+                </div>
+
+                <div class="text-myAccent font-semibold text-[1.3rem] mb-2">
+                    Total Amount: <span></span>
+                </div>
             </div>
         </div>
         <button
             type="button"
             (click)="openCollectDialog()"
-            class="py-2 px-10 rounded text-white transition-all hover:bg-accentHover bg-myAccent w-fit"
+            class="py-2 px-10 rounded text-white self-end transition-all hover:bg-accentHover bg-myAccent w-fit"
         >
             Add Expense
         </button>

@@ -20,6 +20,30 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 
 import { DatePipe } from '@angular/common';
 
+export interface IncomeCategories {
+    position: number;
+    categoryName: string;
+    imgUrl: string;
+}
+
+const ELEMENT_DATA: IncomeCategories[] = [
+    {
+        position: 1,
+        categoryName: 'Sales Revenue',
+        imgUrl: 'assets/images/sales-revenue.png',
+    },
+    {
+        position: 2,
+        categoryName: 'Interest Revenue',
+        imgUrl: 'assets/images/interest-revenue.png',
+    },
+    {
+        position: 3,
+        categoryName: 'Commission Revenue',
+        imgUrl: 'assets/images/commission-revenue.png',
+    },
+];
+
 @Component({
     selector: 'app-income-categories',
     templateUrl: './income-categories.component.html',
@@ -36,6 +60,9 @@ export class IncomeCategoriesComponent {
         private changeDetection: ChangeDetectorRef,
         private datePipe: DatePipe
     ) {}
+
+    displayedColumns: string[] = ['position', 'categoryName', 'actions'];
+    dataSource = ELEMENT_DATA;
 
     data: getIncomeCategory = new getIncomeCategory();
     showAddDialog: boolean = false;

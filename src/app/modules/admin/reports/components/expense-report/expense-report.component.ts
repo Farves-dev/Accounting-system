@@ -5,6 +5,45 @@ import { ExpenseReceiptDialogComponent } from '../expense-receipt-dialog/expense
 import { MatDialog } from '@angular/material/dialog';
 import { ExpensePaymentDialogComponent } from '../expense-payment-dialog/expense-payment-dialog.component';
 
+export interface ManageExpense {
+    position: number;
+    imgUrl: string;
+    categoryName: string;
+    description: string;
+    date: string;
+    taxAmount: number;
+    amount: number;
+}
+
+const ELEMENT_DATA: ManageExpense[] = [
+    {
+        position: 1,
+        imgUrl: 'assets/images/salary.png',
+        categoryName: 'Salaries',
+        description: 'Salaries',
+        date: '23/04/2023',
+        taxAmount: 1000,
+        amount: 10000,
+    },
+    {
+        position: 2,
+        imgUrl: 'assets/images/utilities.png',
+        categoryName: 'Utilities',
+        description: 'Utilities',
+        date: '23/04/2023',
+        taxAmount: 500,
+        amount: 15000,
+    },
+    {
+        position: 3,
+        imgUrl: 'assets/images/rent.png',
+        categoryName: 'Rent',
+        description: 'Rent',
+        date: '23/04/2023',
+        taxAmount: 750,
+        amount: 7000,
+    },
+];
 @Component({
     selector: 'app-expense-report',
     templateUrl: './expense-report.component.html',
@@ -16,6 +55,18 @@ export class ExpenseReportComponent implements OnInit {
         private commonService: CommonService,
         public dialog: MatDialog
     ) {}
+
+    displayedColumns: string[] = [
+        'position',
+        'categoryName',
+        'description',
+        'date',
+        'taxAmount',
+        'amount',
+        'receipt',
+        'details',
+    ];
+    dataSource = ELEMENT_DATA;
 
     navigateToHome() {
         this.commonService.navigateToHome();

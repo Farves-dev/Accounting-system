@@ -13,11 +13,6 @@ export class AddTaxComponent implements OnInit {
         this.commonService.navigateToHome();
     }
 
-    taxType = [
-        { name: 'Direct Tax', id: '1' },
-        { name: 'Indirect Tax', id: '2' },
-    ];
-
     // Default Today Date for datepicker
     date1 = new Date();
     currentYear = this.date1.getUTCFullYear();

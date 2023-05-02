@@ -5,6 +5,34 @@ import { CommonService } from 'app/shared/services/common.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
+export interface ManageTax {
+    position: number;
+    taxType: string;
+    date: string;
+    taxRate: number;
+}
+
+const ELEMENT_DATA: ManageTax[] = [
+    {
+        position: 1,
+        taxType: 'GST',
+        date: '14/04/2023',
+        taxRate: 18,
+    },
+    {
+        position: 2,
+        taxType: 'VAT',
+        date: '14/04/2023',
+        taxRate: 5,
+    },
+    {
+        position: 3,
+        taxType: 'GST',
+        date: '14/04/2023',
+        taxRate: 18,
+    },
+];
+
 @Component({
     selector: 'app-manage-tax',
     templateUrl: './manage-tax.component.html',
@@ -17,6 +45,15 @@ export class ManageTaxComponent implements OnInit {
         private router: Router,
         public newAccount: NewAccountComponent
     ) {}
+
+    displayedColumns: string[] = [
+        'position',
+        'taxType',
+        'date',
+        'taxRate',
+        'actions',
+    ];
+    dataSource = ELEMENT_DATA;
 
     navigateToHome() {
         this.commonService.navigateToHome();

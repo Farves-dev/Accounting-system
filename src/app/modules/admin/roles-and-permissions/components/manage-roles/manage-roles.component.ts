@@ -4,6 +4,34 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'app/shared/services/common.service';
 import { DeleteRoleDialogComponent } from '../delete-role-dialog/delete-role-dialog.component';
 
+export interface ManageTax {
+    position: number;
+    roleName: string;
+    noOfUsers: number;
+    date: string;
+}
+
+const ELEMENT_DATA: ManageTax[] = [
+    {
+        position: 1,
+        roleName: 'Super Admin',
+        noOfUsers: 1,
+        date: '14/04/2023',
+    },
+    {
+        position: 2,
+        roleName: 'Accountant',
+        noOfUsers: 2,
+        date: '14/04/2023',
+    },
+    {
+        position: 3,
+        roleName: 'Manager',
+        noOfUsers: 1,
+        date: '14/04/2023',
+    },
+];
+
 @Component({
     selector: 'app-manage-roles',
     templateUrl: './manage-roles.component.html',
@@ -15,6 +43,15 @@ export class ManageRolesComponent implements OnInit {
         public dialog: MatDialog,
         private router: Router
     ) {}
+
+    displayedColumns: string[] = [
+        'position',
+        'roleName',
+        'noOfUsers',
+        'date',
+        'actions',
+    ];
+    dataSource = ELEMENT_DATA;
 
     navigateToHome() {
         this.commonService.navigateToHome();

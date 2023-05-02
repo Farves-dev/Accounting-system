@@ -10,10 +10,15 @@ import { CollectDialogComponent } from '../collect-dialog/collect-dialog.compone
     styleUrls: ['./add-expense.component.scss'],
 })
 export class AddExpenseComponent implements OnInit {
-    clubsListSlice = [
-        { name: 'Salary', id: '1' },
-        { name: 'part-time', id: '2' },
-        { name: 'Travel', id: '3' },
+    categories = [
+        { name: 'Salaries', id: '1' },
+        { name: 'Utilities', id: '2' },
+        { name: 'Rent', id: '3' },
+    ];
+
+    taxes = [
+        { name: 'GST', id: '1' },
+        { name: 'VAT', id: '2' },
     ];
 
     textInputDisabled = true;

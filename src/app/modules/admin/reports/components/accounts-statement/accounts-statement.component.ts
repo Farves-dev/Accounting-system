@@ -3,6 +3,25 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'app/shared/services/common.service';
 
+export interface ManageExpense {
+    position: number;
+    holderName: string;
+}
+
+const ELEMENT_DATA: ManageExpense[] = [
+    {
+        position: 1,
+        holderName: 'Farves',
+    },
+    {
+        position: 2,
+        holderName: 'Safiyudeen',
+    },
+    {
+        position: 3,
+        holderName: 'Hanif',
+    },
+];
 @Component({
     selector: 'app-accounts-statement',
     templateUrl: './accounts-statement.component.html',
@@ -22,6 +41,9 @@ export class AccountsStatementComponent {
         private router: Router,
         private changeDetection: ChangeDetectorRef // public newAccount: NewAccountComponent
     ) {}
+
+    displayedColumns: string[] = ['position', 'holderName', 'transactions'];
+    dataSource = ELEMENT_DATA;
 
     viewTransactions() {
         this.router.navigateByUrl('reports/account-transactions');

@@ -36,24 +36,16 @@
                 />
             </div>
 
-            <div class="flex flex-col gap-2 w-full">
-                <label for="tax-type" class="font-medium"
-                    >Account Type <span class="text-red-600">*</span></label
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="tax-rate"
+                    >Tax Rate <span class="text-red-600">*</span></label
                 >
-                <mat-form-field class="w-full mt-0">
-                    <mat-select
-                        #clubs
-                        matInfix
-                        disableOptionCentering
-                        placeholder="Select Tax Type"
-                    >
-                        <mat-option
-                            *ngFor="let type of taxType"
-                            [value]="type.id"
-                            >{{ type.name }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <input
+                    id="tax-rate"
+                    type="number"
+                    placeholder="Enter Tax Rate"
+                    class="border border-myAccent p-2 rounded"
+                />
             </div>
 
             <!-- <div class="flex items-center justify-center w-full">
@@ -78,7 +70,7 @@
         </div>
         <button
             type="submit"
-            class="py-2 px-10 rounded text-white transition-all hover:bg-accentHover bg-myAccent w-fit"
+            class="py-2 px-10 rounded self-end text-white transition-all hover:bg-accentHover bg-myAccent w-fit"
         >
             Add Tax
         </button>
