@@ -1,120 +1,131 @@
-<ng-container *ngIf="!isUpdate">
-    <section
-        class="m-5 sm:m-10 p-4 sm:p-6 bg-white rounded-lg w-full flex flex-col gap-4"
+<section
+    class="m-5 sm:m-10 p-4 sm:p-6 bg-white rounded-lg w-full flex flex-col gap-4"
+>
+    <!-- Breadcrumb -->
+    <div class="sm:flex hidden gap-2 items-center">
+        <mat-icon
+            class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
+            svgIcon="heroicons_outline:home"
+            (click)="navigateToHome()"
+        >
+        </mat-icon>
+        <p>Accounts</p>
+        <span>/</span>
+        <p class="font-semibold text-myAccent">Add Account</p>
+    </div>
+
+    <!-- Title -->
+    <h3 class="font-bold text-[1.5rem] text-center sm:text-left">
+        Add Account
+    </h3>
+
+    <!-- Content -->
+    <form
+        [formGroup]="addAccountForm"
+        (ngSubmit)="addOrEditAccount()"
+        class="p-4 sm:p-8 shadow-md rounded-md flex flex-col gap-10 items-center justify-between"
     >
-        <!-- Breadcrumb -->
-        <div class="sm:flex hidden gap-2 items-center">
-            <mat-icon
-                class="text-black hover:text-myAccent transition-all w-[22px] h-[22px] cursor-pointer"
-                svgIcon="heroicons_outline:home"
-                (click)="navigateToHome()"
-            >
-            </mat-icon>
-            <p>Accounts</p>
-            <span>/</span>
-            <p class="font-semibold text-myAccent">Add Account</p>
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full justify-center"
+        >
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="holder-name"
+                    >Account Holder Name
+
+                    <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="holder-name"
+                    type="text"
+                    placeholder="Enter Holder Name"
+                    formControlName="accountName"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="account-number"
+                    >Account Number <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="account-number"
+                    type="text"
+                    (change)="validateAccountNumber($event)"
+                    formControlName="accountNo"
+                    placeholder="Enter Account Number"
+                    class="border border-myAccent p-2 rounded"
+                />
+                <!-- <mat-error *ngIf="response.status === 'failure'">
+                        This is not a valid account number
+                    </mat-error> -->
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="bank-name">
+                    Bank Name <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="bank-name"
+                    type="text"
+                    placeholder="Enter Bank Name"
+                    formControlName="bankName"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+                <label for="income-category" class="font-medium"
+                    >Account Type <span class="text-red-600">*</span></label
+                >
+                <mat-form-field class="w-full mt-0">
+                    <mat-select
+                        #clubs
+                        matInfix
+                        disableOptionCentering
+                        placeholder="Select Account Type"
+                        formControlName="accountType"
+                    >
+                        <mat-option
+                            *ngFor="let accType of accountType"
+                            [value]="accType.id"
+                            >{{ accType.type }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="ifsc-code">
+                    IFSC Code <span class="text-red-600">*</span></label
+                >
+                <input
+                    id="ifsc-code"
+                    type="text"
+                    formControlName="ifscCode"
+                    placeholder="Enter IFSC Code"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="font-medium" for="opening-balance"
+                    >Opening Balance
+                </label>
+                <input
+                    id="opening-balance"
+                    type="number"
+                    placeholder="Enter Opening Balance"
+                    formControlName="initialAmount"
+                    class="border border-myAccent p-2 rounded"
+                />
+            </div>
         </div>
 
-        <!-- Title -->
-        <h3 class="font-bold text-[1.5rem] text-center sm:text-left">
-            Add Account
-        </h3>
-
-        <!-- Content -->
-        <form
-            class="p-4 sm:p-8 shadow-md rounded-md flex flex-col gap-10 items-center justify-between"
+        <button
+            type="submit"
+            class="py-2 px-10 rounded text-white self-end transition-all hover:bg-accentHover bg-myAccent w-fit"
         >
-            <div
-                class="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full justify-center"
-            >
-                <div class="flex flex-col gap-2">
-                    <label class="font-medium" for="holder-name"
-                        >Account Holder Name
-                        <span class="text-red-600">*</span></label
-                    >
-                    <input
-                        id="holder-name"
-                        type="text"
-                        placeholder="Enter Holder Name"
-                        class="border border-myAccent p-2 rounded"
-                    />
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="font-medium" for="account-number"
-                        >Account Number
-                        <span class="text-red-600">*</span></label
-                    >
-                    <input
-                        id="account-number"
-                        type="text"
-                        placeholder="Enter Account Number"
-                        class="border border-myAccent p-2 rounded"
-                    />
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="font-medium" for="bank-name">
-                        Bank Name <span class="text-red-600">*</span></label
-                    >
-                    <input
-                        id="bank-name"
-                        type="text"
-                        placeholder="Enter Bank Name"
-                        class="border border-myAccent p-2 rounded"
-                    />
-                </div>
-
-                <div class="flex flex-col gap-2 w-full">
-                    <label for="income-category" class="font-medium"
-                        >Account Type <span class="text-red-600">*</span></label
-                    >
-                    <mat-form-field class="w-full mt-0">
-                        <mat-select
-                            #clubs
-                            matInfix
-                            disableOptionCentering
-                            placeholder="Select Account Type"
-                        >
-                            <mat-option
-                                *ngFor="let accType of accountType"
-                                [value]="accType.id"
-                                >{{ accType.type }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="font-medium" for="ifsc-code">
-                        IFSC Code <span class="text-red-600">*</span></label
-                    >
-                    <input
-                        id="ifsc-code"
-                        type="text"
-                        placeholder="Enter IFSC Code"
-                        class="border border-myAccent p-2 rounded"
-                    />
-                </div>
-
-                <div class="flex flex-col gap-2">
-                    <label class="font-medium" for="opening-balance"
-                        >Opening Balance
-                    </label>
-                    <input
-                        id="opening-balance"
-                        type="number"
-                        placeholder="Enter Opening Balance"
-                        class="border border-myAccent p-2 rounded"
-                    />
-                </div>
-            </div>
-            <button
-                type="submit"
-                class="py-2 px-10 rounded text-white self-end transition-all hover:bg-accentHover bg-myAccent w-fit"
-            >
-                Add Account
-            </button>
-        </form>
-    </section>
-</ng-container>
+            {{ updateFormData != undefined ? "Update Account" : "Add Account" }}
+        </button>
+    </form>
+</section>

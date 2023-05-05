@@ -1,4 +1,4 @@
-export class IncomeCategory {
+export class AddIncomeCategory {
     categoryName: string;
     categoryType: number = 0;
     userId: number = 4;

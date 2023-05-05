@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IncomeCategory } from '../modals/income-category';
+import { AddIncomeCategory } from '../modals/income-category';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import CryptoJS, { AES } from 'crypto-js';
@@ -15,6 +15,7 @@ export class CommonService {
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
         }),
     };
 
@@ -37,29 +38,7 @@ export class CommonService {
         );
     }
 
-    addIncomeCategoryData(request: any) {
-        console.log(request);
-
-        return this.http.post(
-            this.env.BASE_URL + '/add/category',
-            { data: this.encryptData(request) },
-            this.httpOptions
-        );
-    }
-
-    getIncomeCategoryData(value: any) {
-        return this.http.post(
-            this.env.BASE_URL + '/search/category',
-            { data: this.encryptData(value) },
-            this.httpOptions
-        );
-    }
-
-    deleteIncomeCategoryData(value: any) {
-        return this.http.post(
-            this.env.BASE_URL + '/delete/category',
-            { data: this.encryptData(value) },
-            this.httpOptions
-        );
+    getUserId() {
+        return parseInt(localStorage.getItem('userId'));
     }
 }

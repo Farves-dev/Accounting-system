@@ -9,7 +9,7 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { MaterialExampleModule } from 'app/material.module';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { ShowDialogComponent } from './components/show-dialog/show-dialog.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
         CommonModule,
         AccountsRoutingModule,
         MaterialExampleModule,
+        ReactiveFormsModule,
         FormsModule,
     ],
     providers: [NewAccountComponent],

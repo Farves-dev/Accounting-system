@@ -4,44 +4,45 @@
 >
     <div
         class="flex flex-wrap items-center mx-auto w-fit justify-start gap-10 mt-4"
+        *ngIf="response"
     >
         <div class="flex flex-col items-start">
             <p class="font-semibold text-[1.1rem] text-myAccent">
                 Account Holder Name
             </p>
-            <p>Farves Safiyudeen</p>
+            <p>{{ response.accountName }}</p>
         </div>
         <div class="flex flex-col items-start">
             <p class="font-semibold text-[1.1rem] text-myAccent">
                 Account Number
             </p>
-            <p>88999djkf88565</p>
+            <p>{{ response.accountNo }}</p>
         </div>
         <div class="flex flex-col items-start">
             <p class="font-semibold text-[1.1rem] text-myAccent">IFSC Code</p>
-            <p>1100ifsc</p>
+            <p>{{ response.ifscCode }}</p>
         </div>
         <div class="flex flex-col items-start">
             <p class="font-semibold text-[1.1rem] text-myAccent">Bank Name</p>
-            <p>Indian Bank</p>
+            <p>{{ response.bankName }}</p>
         </div>
         <div class="flex flex-col items-start">
             <p class="font-semibold text-[1.1rem] text-myAccent">
                 Account Type
             </p>
-            <p>Savings Account</p>
+            <p>{{ response.accountType }}</p>
         </div>
         <div class="flex flex-col items-start">
             <p class="font-semibold text-[1.1rem] text-myAccent">
                 Created Date
             </p>
-            <p>Farves Safiyudeen</p>
+            <p>{{ response.createdAt | date }}</p>
         </div>
         <div class="flex flex-col items-start">
             <p class="font-semibold text-[1.1rem] text-myAccent">
                 Account Balance
             </p>
-            <p><span>₹</span>20,000</p>
+            <p>{{ response.runningBalance | currency : "INR" }}</p>
         </div>
     </div>
 

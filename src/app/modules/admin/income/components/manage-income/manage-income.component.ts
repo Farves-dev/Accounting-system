@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'app/shared/services/common.service';
 import { ReceiptDialogComponent } from '../receipt-dialog/receipt-dialog.component';
 import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.component';
+import { CollectDialogComponent } from '../collect-dialog/collect-dialog.component';
 
 export interface ManageIncome {
     position: number;
@@ -75,7 +76,10 @@ export class ManageIncomeComponent implements OnInit {
     }
 
     addIncome() {
-        // this.newAccount.isUpdate = false;
+        this.router.navigateByUrl('/income/add-income');
+    }
+
+    editIncome() {
         this.router.navigateByUrl('/income/add-income');
     }
 

@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     BASE_URL: 'http://192.168.1.60:3000',
-    TOKEN: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtbWVkQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYWJjMTIzIiwiaWF0IjoxNjgwOTUzMjAxfQ.S6_UZaDyeEFsZ4PSJXV13SKStRbSkl6elqfVLvS6sAA',
+    // TOKEN: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1vaGFtbWVkQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYWJjMTIzIiwiaWF0IjoxNjgwOTUzMjAxfQ.S6_UZaDyeEFsZ4PSJXV13SKStRbSkl6elqfVLvS6sAA',
 
     SECRET_KEY: 'my-secret-key-is-safe',
 };

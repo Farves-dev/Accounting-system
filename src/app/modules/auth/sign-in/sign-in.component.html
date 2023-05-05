@@ -6,24 +6,24 @@
     >
         <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
             <!-- Logo -->
-            <div class="w-12">
+            <div class="w-12 -mb-4">
                 <img src="assets/images/logo/logo.svg" />
             </div>
 
             <!-- Title -->
             <div
-                class="mt-8 text-4xl font-extrabold tracking-tight leading-tight"
+                class="mt-8 -mb-4 text-4xl font-extrabold tracking-tight leading-tight"
             >
                 Sign in
             </div>
-            <div class="flex items-baseline mt-0.5 font-medium">
+            <!-- <div class="flex items-baseline mt-0.5 font-medium">
                 <div>Don't have an account?</div>
                 <a
                     class="ml-1 hover:underline text-myAccent"
                     [routerLink]="['/sign-up']"
                     >Sign up
                 </a>
-            </div>
+            </div> -->
 
             <!-- Alert -->
             <fuse-alert
@@ -100,15 +100,15 @@
                 </div>
 
                 <!-- Actions -->
-                <div
+                <!-- <div
                     class="inline-flex items-end justify-between w-full mt-1.5"
                 >
-                    <!-- <mat-checkbox
+                    <mat-checkbox
                         [formControlName]="'rememberMe'"
                         class="accent-myAccent"
                     >
                         Remember me
-                    </mat-checkbox> -->
+                    </mat-checkbox>
 
                     <div class="flex items-center gap-2">
                         <input
@@ -124,7 +124,7 @@
                         [routerLink]="['/forgot-password']"
                         >Forgot password?
                     </a>
-                </div>
+                </div> -->
 
                 <!-- Submit button -->
                 <button

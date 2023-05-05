@@ -10,8 +10,8 @@ export interface Transactions {
     creditAmount: number | string;
     debitAmount: number | string;
     incluExclu: string;
-    taxRate: number;
-    taxAmount: number;
+    taxRate: number | string;
+    taxAmount: number | string;
     description: string;
     runningBalance: number;
 }
@@ -25,7 +25,7 @@ const ELEMENT_DATA: Transactions[] = [
         creditAmount: 2000,
         debitAmount: '-',
         incluExclu: 'Excluded',
-        taxRate: 18,
+        taxRate: '18%',
         taxAmount: 305.04,
         description: 'This is for Event Organizing',
         runningBalance: 2000,
@@ -38,7 +38,7 @@ const ELEMENT_DATA: Transactions[] = [
         creditAmount: '-',
         debitAmount: 423.73,
         incluExclu: 'Included',
-        taxRate: 18,
+        taxRate: '18%',
         taxAmount: 76.27,
         description: 'This is for Travel',
         runningBalance: 1500,
@@ -50,9 +50,9 @@ const ELEMENT_DATA: Transactions[] = [
         date: '25/04/2023',
         creditAmount: 1000,
         debitAmount: '-',
-        incluExclu: 'Excluded',
-        taxRate: 18,
-        taxAmount: 152.54,
+        incluExclu: '-',
+        taxRate: '-',
+        taxAmount: '-',
         description: 'This is for construction material',
         runningBalance: 2500,
     },

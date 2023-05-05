@@ -19,6 +19,8 @@
 
     <!-- Content -->
     <form
+        [formGroup]="addTaxForm"
+        (ngSubmit)="addOrEditTax()"
         class="p-4 sm:p-8 shadow-md rounded-md flex flex-col gap-10 items-center justify-between"
     >
         <div
@@ -32,6 +34,7 @@
                     id="tax-name"
                     type="text"
                     placeholder="Enter Tax Name"
+                    formControlName="taxName"
                     class="border border-myAccent p-2 rounded"
                 />
             </div>
@@ -43,36 +46,17 @@
                 <input
                     id="tax-rate"
                     type="number"
+                    formControlName="taxRate"
                     placeholder="Enter Tax Rate"
                     class="border border-myAccent p-2 rounded"
                 />
             </div>
-
-            <!-- <div class="flex items-center justify-center w-full">
-                <mat-form-field class="w-full">
-                    <mat-label id="tax-type"
-                        >Select Tax Type
-                        <span class="text-red-600">*</span></mat-label
-                    >
-                    <mat-select
-                        matInfix
-                        disableOptionCentering
-                        placeholder="Select Tax Type"
-                    >
-                        <mat-option
-                            *ngFor="let type of taxType"
-                            [value]="type.id"
-                            >{{ type.name }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div> -->
         </div>
         <button
             type="submit"
             class="py-2 px-10 rounded self-end text-white transition-all hover:bg-accentHover bg-myAccent w-fit"
         >
-            Add Tax
+            {{ updateFormData != undefined ? "Update Tax" : "Add Tax" }}
         </button>
     </form>
 </section>

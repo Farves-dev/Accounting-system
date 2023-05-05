@@ -1,91 +1,110 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewAccountComponent } from 'app/modules/admin/accounts/components/new-account/new-account.component';
 import { CommonService } from 'app/shared/services/common.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
-export interface ManageTax {
-    position: number;
-    taxType: string;
-    date: string;
-    taxRate: number;
-}
-
-const ELEMENT_DATA: ManageTax[] = [
-    {
-        position: 1,
-        taxType: 'GST',
-        date: '14/04/2023',
-        taxRate: 18,
-    },
-    {
-        position: 2,
-        taxType: 'VAT',
-        date: '14/04/2023',
-        taxRate: 5,
-    },
-    {
-        position: 3,
-        taxType: 'GST',
-        date: '14/04/2023',
-        taxRate: 18,
-    },
-];
+import { TaxService } from 'app/shared/services/tax.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { GetTax } from 'app/shared/modals/tax';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
     selector: 'app-manage-tax',
     templateUrl: './manage-tax.component.html',
     styleUrls: ['./manage-tax.component.scss'],
 })
-export class ManageTaxComponent implements OnInit {
-    constructor(
-        private commonService: CommonService,
-        public dialog: MatDialog,
-        private router: Router,
-        public newAccount: NewAccountComponent
-    ) {}
-
+export class ManageTaxComponent {
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    dataSource: MatTableDataSource<any>;
+    getTaxModal: GetTax = new GetTax();
     displayedColumns: string[] = [
         'position',
-        'taxType',
-        'date',
+        'taxName',
+        'createdAt',
         'taxRate',
         'actions',
     ];
-    dataSource = ELEMENT_DATA;
 
-    navigateToHome() {
-        this.commonService.navigateToHome();
+    constructor(
+        private _commonService: CommonService,
+        private _taxService: TaxService,
+        public dialog: MatDialog,
+        private router: Router,
+        public newAccount: NewAccountComponent,
+        private changeDetection: ChangeDetectorRef
+    ) {}
+
+    ngOnInit(): void {
+        this.getTaxModal.userId = this._commonService.getUserId();
+        this.getTax();
     }
 
-    openDeleteDialog() {
+    applyFilter() {
+        this.dataSource.filter = '' + Math.random();
+    }
+
+    navigateToHome() {
+        this._commonService.navigateToHome();
+    }
+
+    openDeleteDialog(id: number) {
         const dialogRef = this.dialog.open(DeleteDialogComponent, {
             width: '400px',
+            data: { id },
         });
         dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
+            if (result) {
+                this.getTax();
+            }
+        });
+    }
+
+    searchAccount(event: any) {
+        this.getTaxModal.search =
+            event.target.value === '' ? null : event.target.value;
+        this.getTax();
+    }
+
+    getTax() {
+        console.log(this.getTaxModal);
+
+        this._taxService.getTax(this.getTaxModal).subscribe((res) => {
+            // const decryptedData = this._commonService.decryptData(res);
+            console.log(this._commonService.decryptData(res));
+
+            this.dataSource = new MatTableDataSource(
+                this._commonService.decryptData(res)
+            );
+
+            this.dataSource.paginator = this.paginator;
+            // this.dataSource.sort = this.sort;
+            this.changeDetection.detectChanges();
         });
     }
 
     addTax() {
-        this.newAccount.isUpdate = false;
         this.router.navigateByUrl('/tax/add-tax');
     }
 
-    // openShowDialog() {
-    //     const dialogRef = this.dialog.open(ShowDialogComponent, {
-    //         width: '750px',
-    //     });
-    //     dialogRef.afterClosed().subscribe((result) => {
-    //         console.log(`Dialog result: ${result}`);
-    //     });
-    // }
-
-    ngOnInit(): void {}
-
-    public setUpdateMode() {
-        this.newAccount.isUpdate = true;
-        this.router.navigateByUrl('/accounts/new-account');
+    editTax(element: any) {
+        this.router.navigate(['/tax/add-tax'], {
+            state: { data: element },
+        });
     }
+
+    dateFilter() {
+        this.getTax();
+    }
+
+    clearDate() {
+        (this.getTaxModal.startDate = null),
+            (this.getTaxModal.endDate = null),
+            this.getTax();
+    }
+
+    // public setUpdateMode() {
+    //     this.newAccount.isUpdate = true;
+    //     this.router.navigateByUrl('/accounts/new-account');
+    // }
 }

@@ -1,88 +1,137 @@
 import { Component, OnInit } from '@angular/core';
 import { ApexOptions } from 'apexcharts';
 
-export interface Dashboard {
+export interface Transactions {
+    position: number;
     holderName: string;
     paymentMode: string;
     date: string;
-    description: string;
-    creditAmount: number;
-    position: number;
+    creditAmount: number | string;
     debitAmount: number | string;
+    incluExclu: string;
+    taxRate: number | string;
+    taxAmount: number | string;
+    description: string;
+    runningBalance: number;
 }
 
-const ELEMENT_DATA: Dashboard[] = [
+const ELEMENT_DATA: Transactions[] = [
     {
         position: 1,
         holderName: 'Farves',
         paymentMode: 'Gpay',
-        date: '23/04/2023',
+        date: '25/04/2023',
         creditAmount: 2000,
         debitAmount: '-',
-        description: 'Event Organizing',
+        incluExclu: 'Excluded',
+        taxRate: '18%',
+        taxAmount: 305.04,
+        description: 'This is for Event Organizing',
+        runningBalance: 2000,
     },
     {
         position: 2,
-        holderName: 'Farves',
-        paymentMode: 'Gpay',
-        date: '23/04/2023',
-        creditAmount: 2000,
-        debitAmount: '-',
-        description: 'Event Organizing',
+        holderName: 'Safiyudeen',
+        paymentMode: 'Credit Card',
+        date: '25/04/2023',
+        creditAmount: '-',
+        debitAmount: 423.73,
+        incluExclu: 'Included',
+        taxRate: '18%',
+        taxAmount: 76.27,
+        description: 'This is for Travel',
+        runningBalance: 1500,
     },
     {
         position: 3,
-        holderName: 'Farves',
-        paymentMode: 'Gpay',
-        date: '23/04/2023',
-        creditAmount: 2000,
+        holderName: 'Hanif',
+        paymentMode: 'Phone Pe',
+        date: '25/04/2023',
+        creditAmount: 1000,
         debitAmount: '-',
-        description: 'Event Organizing',
+        incluExclu: '-',
+        taxRate: '-',
+        taxAmount: '-',
+        description: 'This is for construction material',
+        runningBalance: 2500,
     },
     {
         position: 4,
         holderName: 'Farves',
         paymentMode: 'Gpay',
-        date: '23/04/2023',
+        date: '25/04/2023',
         creditAmount: 2000,
         debitAmount: '-',
-        description: 'Event Organizing',
+        incluExclu: 'Excluded',
+        taxRate: '18%',
+        taxAmount: 305.04,
+        description: 'This is for Event Organizing',
+        runningBalance: 2000,
     },
     {
         position: 5,
-        holderName: 'Farves',
-        paymentMode: 'Gpay',
-        date: '23/04/2023',
-        creditAmount: 2000,
-        debitAmount: '-',
-        description: 'Event Organizing',
+        holderName: 'Safiyudeen',
+        paymentMode: 'Credit Card',
+        date: '25/04/2023',
+        creditAmount: '-',
+        debitAmount: 423.73,
+        incluExclu: 'Included',
+        taxRate: '18%',
+        taxAmount: 76.27,
+        description: 'This is for Travel',
+        runningBalance: 1500,
     },
     {
         position: 6,
-        holderName: 'Farves',
-        paymentMode: 'Gpay',
-        date: '23/04/2023',
-        creditAmount: 2000,
+        holderName: 'Hanif',
+        paymentMode: 'Phone Pe',
+        date: '25/04/2023',
+        creditAmount: 1000,
         debitAmount: '-',
-        description: 'Event Organizing',
+        incluExclu: '-',
+        taxRate: '-',
+        taxAmount: '-',
+        description: 'This is for construction material',
+        runningBalance: 2500,
     },
     {
         position: 7,
         holderName: 'Farves',
         paymentMode: 'Gpay',
-        date: '23/04/2023',
+        date: '25/04/2023',
         creditAmount: 2000,
         debitAmount: '-',
-        description: 'Event Organizing',
+        incluExclu: 'Excluded',
+        taxRate: '18%',
+        taxAmount: 305.04,
+        description: 'This is for Event Organizing',
+        runningBalance: 2000,
     },
     {
         position: 8,
-        holderName: 'Farves',
-        paymentMode: 'Gpay',
-        date: '23/04/2023',
-        creditAmount: 2000,
+        holderName: 'Safiyudeen',
+        paymentMode: 'Credit Card',
+        date: '25/04/2023',
+        creditAmount: '-',
+        debitAmount: 423.73,
+        incluExclu: 'Included',
+        taxRate: '18%',
+        taxAmount: 76.27,
+        description: 'This is for Travel',
+        runningBalance: 1500,
+    },
+    {
+        position: 9,
+        holderName: 'Hanif',
+        paymentMode: 'Phone Pe',
+        date: '25/04/2023',
+        creditAmount: 1000,
         debitAmount: '-',
-        description: 'Event Organizing',
+        incluExclu: '-',
+        taxRate: '-',
+        taxAmount: '-',
+        description: 'This is for construction material',
+        runningBalance: 2500,
     },
 ];
 
@@ -104,7 +153,11 @@ export class DashboardComponent {
         'date',
         'creditAmount',
         'debitAmount',
+        'incluExclu',
+        'taxRate',
+        'taxAmount',
         'description',
+        'runningBalance',
     ];
     dataSource = ELEMENT_DATA;
 

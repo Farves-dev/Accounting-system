@@ -8,7 +8,7 @@ import { TaxStatementComponent } from './components/tax-statement/tax-statement.
 import { MaterialExampleModule } from 'app/material.module';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { NewAccountComponent } from '../accounts/components/new-account/new-account.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
         TaxRoutingModule,
         MaterialExampleModule,
         FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [NewAccountComponent],
 })

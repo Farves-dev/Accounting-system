@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
+import { CommonService } from 'app/shared/services/common.service';
 
 @Component({
     selector: 'auth-sign-in',
@@ -26,6 +27,8 @@ export class AuthSignInComponent implements OnInit {
     signInForm: UntypedFormGroup;
     showAlert: boolean = false;
 
+    result: any;
+
     /**
      * Constructor
      */
@@ -33,7 +36,8 @@ export class AuthSignInComponent implements OnInit {
         private _activatedRoute: ActivatedRoute,
         private _authService: AuthService,
         private _formBuilder: UntypedFormBuilder,
-        private _router: Router
+        private _router: Router,
+        private _commonService: CommonService
     ) {}
 
     // -----------------------------------------------------------------------------------------------------
@@ -47,10 +51,10 @@ export class AuthSignInComponent implements OnInit {
         // Create the form
         this.signInForm = this._formBuilder.group({
             email: [
-                'hughes.brian@company.com',
+                'mohammed@gmail.com',
                 [Validators.required, Validators.email],
             ],
-            password: ['admin', Validators.required],
+            password: ['abc123', Validators.required],
             rememberMe: [''],
         });
     }
@@ -62,7 +66,21 @@ export class AuthSignInComponent implements OnInit {
     /**
      * Sign in
      */
-    signIn(): void {
+
+    signIn() {
+        this._authService.signIn(this.signInForm.value).subscribe((res) => {
+            this.result = this._commonService.decryptData(res);
+            localStorage.setItem('token', this.result.token);
+            localStorage.setItem('userId', this.result.userId);
+            localStorage.setItem('userName', this.result.name);
+            localStorage.setItem('userMail', this.result.email);
+            localStorage.setItem('privileges', this.result.permissions);
+            console.log(this.result);
+            this._router.navigateByUrl('dashboard');
+        });
+    }
+
+    ssignIn(): void {
         // Return if the form is invalid
         if (this.signInForm.invalid) {
             return;
@@ -76,7 +94,9 @@ export class AuthSignInComponent implements OnInit {
 
         // Sign in
         this._authService.signIn(this.signInForm.value).subscribe(
-            () => {
+            (res) => {
+                console.log(res);
+
                 // Set the redirect url.
                 // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
                 // to the correct page after a successful sign in. This way, that url can be set via

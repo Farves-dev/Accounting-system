@@ -1,112 +1,45 @@
-<!-- <main class="antialiased font-sans overflow-x-hidden">
-    <div class="relative px-4 min-h-screen flex items-center justify-center">
-        <div
-            class="bg-black opacity-50 w-full h-full absolute z-10 inset-0"
-        ></div> -->
-<!-- Add dialog -->
-<!-- <div
-            class="bg-white flex gap-4 items-center justify-center rounded-lg p-6 max-w-[30rem] w-full fixed bottom-[40%] z-50 mb-4 mx-4 md:relative"
-            *ngIf="togglePopup == 'addCategory'"
-        >
-            <form
-                (ngSubmit)="sendData()"
-                class="flex flex-col items-end gap-4 w-full"
-            >
-                <div class="flex flex-col gap-2 w-full">
-                    <label for="addCategory" class="font-semibold">
-                        Category Name
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="Enter Category Name"
-                        class="border border-myAccent caret-myAccent text-black p-2 w-full rounded"
-                        [(ngModel)]="NewCateName.categoryName"
-                        name="categoryName"
-                    />
-                </div>
-
-                <div class="flex gap-3 items-center">
-                    <button
-                        type="button"
-                        class="px-4 py-1 border border-myAccent text-myAccent hover:bg-[#f4f4f4] rounded transition-all"
-                        (click)="closeDialog()"
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        class="px-4 py-1 bg-myAccent text-white hover:bg-accentHover rounded transition-all"
-                        type="submit"
-                    >
-                        Add
-                    </button>
-                </div>
-            </form>
-        </div> -->
-
-<!-- Delete Dialog -->
-<!-- <div
-            *ngIf="togglePopup == 'deleteCategory'"
-            class="bg-white flex gap-4 items-center justify-center rounded-lg p-6 max-w-[30rem] w-full fixed bottom-[40%] z-50 mb-4 mx-4 md:relative"
-        >
-            <div class="flex flex-col items-end gap-4 w-full">
-                <p>Do you really want to delete?</p>
-
-                <div class="flex gap-3 items-center">
-                    <button
-                        class="px-4 py-1 border border-myAccent text-myAccent hover:bg-[#f4f4f4] rounded transition-all"
-                        (click)="closeDialog()"
-                    >
-                        No
-                    </button>
-                    <button
-                        class="px-4 py-1 bg-myAccent text-white hover:bg-accentHover rounded transition-all"
-                    >
-                        Yes
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!-- </main> -->
-
 <!-- Angular Material Dialog -->
 <h2 mat-dialog-title class="mb-2">Add Income Category</h2>
-<mat-dialog-content class="mat-typography mb-2 flex flex-col gap-4">
-    <div class="flex flex-col gap-4">
-        <label for="category-name" class="text-[1rem] font-medium"
-            >Category Name</label
-        >
-        <input
-            type="text"
-            placeholder="Enter Category Name"
-            id="category-name"
-            [(ngModel)]="NewCateName.categoryName"
-            class="border border-myAccent caret-myAccent px-4 py-2 rounded"
-        />
-    </div>
+<form [formGroup]="addCategoryForm" (ngSubmit)="sendData()">
+    <mat-dialog-content class="mat-typography mb-2 flex flex-col gap-4">
+        <div class="flex flex-col gap-4">
+            <label for="category-name" class="text-[1rem] font-medium"
+                >Category Name</label
+            >
+            <input
+                type="text"
+                placeholder="Enter Category Name"
+                id="category-name"
+                formControlName="categoryName"
+                class="border border-myAccent caret-myAccent px-4 py-2 rounded"
+            />
+        </div>
 
-    <div class="flex flex-col gap-2 w-fit">
-        <label class="font-medium" for="icon">Add Icon</label>
-        <input
-            id="icon"
-            type="file"
-            class="file:border-myAccent file:bg-transparent file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-[1px] hover:file:bg-myAccent hover:file:text-white file:text-myAccent file:transition-all"
-        />
-    </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end" class="flex gap-4 items-center">
-    <button
-        class="border border-myAccent text-myAccent bg-transparent rounded px-4 py-2"
-        mat-dialog-close
-    >
-        Cancel
-    </button>
-    <button
-        class="bg-myAccent text-white border border-myAccent hover:bg-accentHover transition rounded px-4 py-2"
-        [mat-dialog-close]="data.name"
-        cdkFocusInitial
-        (click)="sendData()"
-    >
-        Add
-    </button>
-</mat-dialog-actions>
+        <div class="flex flex-col gap-2 w-fit">
+            <label class="font-medium" for="icon">Add Icon</label>
+            <input
+                id="icon"
+                type="file"
+                accept="image/*"
+                (change)="uploadImage($event)"
+                class="file:border-myAccent file:bg-transparent file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-[1px] hover:file:bg-myAccent hover:file:text-white file:text-myAccent file:transition-all"
+            />
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="flex gap-4 items-center">
+        <button
+            class="border border-myAccent text-myAccent bg-transparent rounded px-4 py-2"
+            mat-dialog-close
+        >
+            Cancel
+        </button>
+        <button
+            class="bg-myAccent text-white border border-myAccent hover:bg-accentHover transition rounded px-4 py-2"
+            [mat-dialog-close]="data.name"
+            cdkFocusInitial
+            type="submit"
+        >
+            Add
+        </button>
+    </mat-dialog-actions>
+</form>

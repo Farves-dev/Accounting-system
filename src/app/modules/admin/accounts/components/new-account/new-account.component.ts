@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AccountService } from 'app/shared/services/account.service';
 import { CommonService } from 'app/shared/services/common.service';
 
 @Component({
@@ -7,27 +10,94 @@ import { CommonService } from 'app/shared/services/common.service';
     styleUrls: ['./new-account.component.scss'],
 })
 export class NewAccountComponent {
-    constructor(private commonService: CommonService) {}
-    showDialog: boolean = true;
-    option: any = 0;
-    isUpdate: boolean = false;
+    addAccountForm: FormGroup;
+    updateFormData: any = undefined;
+    userId: any;
+    isEdit: boolean = false; // this is for toggle button text add or edit
+    response: any;
 
-    navigateToHome() {
-        this.commonService.navigateToHome();
-    }
+    // addAccountModal: AddAccount = new AddAccount();
 
+    constructor(
+        private _commonService: CommonService,
+        private _accountService: AccountService,
+        private _formBuilder: FormBuilder,
+        private _route: Router,
+        private changeDetection: ChangeDetectorRef
+    ) {}
     accountType = [
-        { type: 'Cash', id: '1' },
-        { type: 'Savings Account', id: '2' },
-        { type: 'Current Account', id: '3' },
+        { type: 'Cash', id: 0 },
+        { type: 'Savings Account', id: 1 },
+        { type: 'Current Account', id: 2 },
     ];
 
-    // ngOnInit(): void {
-    //     this.container.option = 2;
-    // }
-    // ngAfterContentInit() {
-    //     if (this.container.accountId != undefined) {
-    //         this.option = 1;
-    //     }
-    // }
+    validateAccountNumber(event) {
+        const req = {
+            userId: this.userId,
+            accountNo: event.target.value,
+        };
+        this._accountService.accountNumberValidate(req).subscribe((res) => {
+            console.log(this._commonService.decryptData(res));
+            this.response = this._commonService.decryptData(res);
+            if (this.response.status === 'failure') {
+                alert('This account number is already exist.');
+                event.target.value = '';
+            }
+            this.changeDetection.detectChanges();
+        });
+    }
+
+    ngOnInit() {
+        this.userId = this._commonService.getUserId();
+        this.addAccountForm = this._formBuilder.group({
+            accountName: ['', Validators.required],
+            accountNo: ['', Validators.required],
+            bankName: ['', Validators.required],
+            accountType: ['', Validators.required],
+            ifscCode: ['', Validators.required],
+            initialAmount: null,
+            userId: this.userId,
+        });
+    }
+
+    ngAfterContentInit() {
+        if (history.state.data) {
+            this.updateFormData = history.state.data;
+            this.isEdit = true;
+            this.addAccountForm.patchValue(this.updateFormData);
+            console.log(this.updateFormData);
+        }
+    }
+
+    addOrEditAccount() {
+        if (this.addAccountForm.valid) {
+            if (history.state.data) {
+                // console.log(history.state.data);
+                // console.log(this.addAccountForm.value);
+                this.addAccountForm.value.userId = this.userId;
+                this.addAccountForm.value.id = history.state.data.id;
+                this._accountService
+                    .updateAccount(this.addAccountForm.value)
+                    .subscribe((res) => {
+                        console.log(this._commonService.decryptData(res));
+                        this.addAccountForm.reset();
+                        this._route.navigateByUrl('accounts/manage-account');
+                        this.changeDetection.detectChanges();
+                    });
+            } else {
+                this._accountService
+                    .addAccount(this.addAccountForm.value)
+                    .subscribe((res) => {
+                        console.log(this._commonService.decryptData(res));
+                        this.addAccountForm.reset();
+                        this._route.navigateByUrl('accounts/manage-account');
+                        this.changeDetection.detectChanges();
+                    });
+            }
+        }
+    }
+
+    navigateToHome() {
+        this._commonService.navigateToHome();
+    }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'app/shared/services/common.service';
 import { CollectDialogComponent } from '../collect-dialog/collect-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-add-income',
@@ -10,29 +11,21 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AddIncomeComponent {
     categories = [
-        { name: 'Sales Revenue', id: '1' },
-        { name: 'Interest Revenue', id: '2' },
-        { name: 'Commission Revenue', id: '3' },
+        { name: 'Sales Revenue', id: 1 },
+        { name: 'Interest Revenue', id: 2 },
+        { name: 'Commission Revenue', id: 3 },
     ];
+
     accounts = [
-        { name: 'Farves', id: '1' },
-        { name: 'Irsath', id: '2' },
-        { name: 'Moosa', id: '3' },
+        { name: 'Farves', id: 1 },
+        { name: 'Irsath', id: 2 },
+        { name: 'Moosa', id: 3 },
     ];
 
     taxes = [
-        { name: 'GST', id: '1' },
-        { name: 'VAT', id: '2' },
+        { name: 'GST', id: 1 },
+        { name: 'VAT', id: 2 },
     ];
-
-    // Default Today Date for datepicker
-    date1 = new Date();
-    currentYear = this.date1.getUTCFullYear();
-    currentMonth = this.date1.getUTCMonth() + 1;
-    currentDay = this.date1.getUTCDate();
-    finalMonth: any;
-    finalDay: any;
-    todayDate: any;
 
     isDisabled: boolean = true;
     taxRate: any;
@@ -52,22 +45,7 @@ export class AddIncomeComponent {
         this.commonService.navigateToHome();
     }
 
-    ngOnInit() {
-        if (this.currentDay < 10) {
-            this.finalDay = '0' + this.currentDay;
-        } else {
-            this.finalDay = this.currentDay;
-        }
-
-        if (this.currentMonth < 10) {
-            this.finalMonth = '0' + this.currentMonth;
-        } else {
-            this.finalMonth = this.currentMonth;
-        }
-
-        this.todayDate =
-            this.finalDay + '-' + this.finalMonth + '-' + this.currentYear;
-    }
+    ngOnInit() {}
 
     openCollectDialog() {
         const dialogRef = this.dialog.open(CollectDialogComponent, {

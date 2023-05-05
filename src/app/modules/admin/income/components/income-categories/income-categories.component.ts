@@ -12,13 +12,14 @@ import { IncomeCategoriesDialogComponent } from '../income-categories-dialog/inc
 import { CommonService } from 'app/shared/services/common.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {
-    IncomeCategory,
+    AddIncomeCategory,
     getIncomeCategory,
 } from 'app/shared/modals/income-category';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 import { DatePipe } from '@angular/common';
+import { IncomeService } from 'app/shared/services/income.service';
 
 export interface IncomeCategories {
     position: number;
@@ -58,7 +59,8 @@ export class IncomeCategoriesComponent {
         private commonService: CommonService,
         public dialog: MatDialog,
         private changeDetection: ChangeDetectorRef,
-        private datePipe: DatePipe
+        private datePipe: DatePipe,
+        private _incomeService: IncomeService
     ) {}
 
     displayedColumns: string[] = ['position', 'categoryName', 'actions'];
@@ -68,7 +70,7 @@ export class IncomeCategoriesComponent {
     showAddDialog: boolean = false;
     showDeleteDialog: boolean = false;
     incomeCategory: any;
-    incomeCategoryModal: IncomeCategory = new IncomeCategory();
+    incomeCategoryModal: AddIncomeCategory = new AddIncomeCategory();
     incomeResult: any;
 
     startDate: Date;
@@ -114,7 +116,7 @@ export class IncomeCategoriesComponent {
     ngAfterViewInit() {}
 
     ngOnInit() {
-        this.getIncomeCategory();
+        // this.getIncomeCategory();
         // const today = new Date();
         // const firstDayOfMonth = new Date(
         //     today.getFullYear(),
@@ -130,34 +132,34 @@ export class IncomeCategoriesComponent {
         // this.endDate = lastDayOfMonth;
     }
 
-    onSuccessAdd(event) {
-        if (event == 'added') {
-            this.showAddDialog = false;
-            this.getIncomeCategory();
-        } else if (event == 'closed') {
-            this.showAddDialog = false;
-        }
-    }
+    // onSuccessAdd(event) {
+    //     if (event == 'added') {
+    //         this.showAddDialog = false;
+    //         this.getIncomeCategory();
+    //     } else if (event == 'closed') {
+    //         this.showAddDialog = false;
+    //     }
+    // }
 
-    getIncomeCategory() {
-        this.commonService.getIncomeCategoryData(this.data).subscribe(
-            (data) => {
-                this.incomeCategory = this.commonService.decryptData(data);
-                console.log(this.commonService.decryptData(data));
-                this.changeDetection.detectChanges();
-            },
-            (e: HttpErrorResponse) => {
-                console.log(e);
-            }
-        );
-    }
+    // getIncomeCategory() {
+    //     this.commonService.getIncomeCategoryData(this.data).subscribe(
+    //         (data) => {
+    //             this.incomeCategory = this.commonService.decryptData(data);
+    //             console.log(this.commonService.decryptData(data));
+    //             this.changeDetection.detectChanges();
+    //         },
+    //         (e: HttpErrorResponse) => {
+    //             console.log(e);
+    //         }
+    //     );
+    // }
 
-    deleteIncomeCategory(id: number) {
-        let req = {
-            userId: this.incomeCategoryModal.userId,
-            id: id,
-        };
-        this.showDeleteDialog = true;
-        this.commonService.deleteIncomeCategoryData(req).subscribe((res) => {});
-    }
+    // deleteIncomeCategory(id: number) {
+    //     let req = {
+    //         userId: this.incomeCategoryModal.userId,
+    //         id: id,
+    //     };
+    //     this.showDeleteDialog = true;
+    //     this.commonService.deleteIncomeCategoryData(req).subscribe((res) => {});
+    // }
 }

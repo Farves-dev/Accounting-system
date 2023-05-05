@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonService } from 'app/shared/services/common.service';
+import { TaxService } from 'app/shared/services/tax.service';
 
 @Component({
     selector: 'app-add-tax',
@@ -7,35 +10,67 @@ import { CommonService } from 'app/shared/services/common.service';
     styleUrls: ['./add-tax.component.scss'],
 })
 export class AddTaxComponent implements OnInit {
-    constructor(private commonService: CommonService) {}
+    addTaxForm: FormGroup;
+    updateFormData: any = undefined;
+    userId: any;
+    isEdit: boolean = false; // this is for toggle button text add or edit
+    // response: any;
 
-    navigateToHome() {
-        this.commonService.navigateToHome();
-    }
-
-    // Default Today Date for datepicker
-    date1 = new Date();
-    currentYear = this.date1.getUTCFullYear();
-    currentMonth = this.date1.getUTCMonth() + 1;
-    currentDay = this.date1.getUTCDate();
-    finalMonth: any;
-    finalDay: any;
-    todayDate: any;
+    constructor(
+        private _commonService: CommonService,
+        private _taxService: TaxService,
+        private _formBuilder: FormBuilder,
+        private _route: Router,
+        private changeDetection: ChangeDetectorRef
+    ) {}
 
     ngOnInit(): void {
-        if (this.currentDay < 10) {
-            this.finalDay = '0' + this.currentDay;
-        } else {
-            this.finalDay = this.currentDay;
-        }
+        this.userId = this._commonService.getUserId();
+        this.addTaxForm = this._formBuilder.group({
+            taxName: '',
+            taxRate: '',
+            userId: this.userId,
+        });
+    }
 
-        if (this.currentMonth < 10) {
-            this.finalMonth = '0' + this.currentMonth;
-        } else {
-            this.finalMonth = this.currentMonth;
+    ngAfterContentInit() {
+        if (history.state.data) {
+            this.updateFormData = history.state.data;
+            this.isEdit = true;
+            this.addTaxForm.patchValue(this.updateFormData);
+            console.log(this.updateFormData);
         }
+    }
 
-        this.todayDate =
-            this.finalDay + '-' + this.finalMonth + '-' + this.currentYear;
+    addOrEditTax() {
+        if (this.addTaxForm.valid) {
+            if (history.state.data) {
+                // console.log(history.state.data);
+                // console.log(this.addTaxForm.value);
+                this.addTaxForm.value.userId = this.userId;
+                this.addTaxForm.value.id = history.state.data.id;
+                this._taxService
+                    .updateTax(this.addTaxForm.value)
+                    .subscribe((res) => {
+                        console.log(this._commonService.decryptData(res));
+                        this.addTaxForm.reset();
+                        this._route.navigateByUrl('tax/manage-tax');
+                        this.changeDetection.detectChanges();
+                    });
+            } else {
+                this._taxService
+                    .addTax(this.addTaxForm.value)
+                    .subscribe((res) => {
+                        console.log(this._commonService.decryptData(res));
+                        this.addTaxForm.reset();
+                        this._route.navigateByUrl('tax/manage-tax');
+                        this.changeDetection.detectChanges();
+                    });
+            }
+        }
+    }
+
+    navigateToHome() {
+        this._commonService.navigateToHome();
     }
 }

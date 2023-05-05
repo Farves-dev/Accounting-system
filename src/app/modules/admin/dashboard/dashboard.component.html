@@ -116,310 +116,6 @@
     <div class="flex flex-col gap-2 mt-2 items-start w-full">
         <h5 class="font-bold text-xl">Transaction History</h5>
 
-        <!-- <div class="w-full">
-            <div class="container space-y-8 text-md mx-auto">
-                <div class="space-y-2">
-                    <div class="bg-white shadow rounded-lg overflow-x-scroll">
-                        <table
-                            class="table text-center lg:text-left table-auto w-full leading-normal"
-                        >
-                            <thead
-                                class="uppercase text-center text-black font-bold bg-[#F1F5F9]"
-                            >
-                                <tr class="space-x-10">
-                                    <th class="text-left p-3">
-                                        <p>SN</p>
-                                    </th>
-                                    <th class="text-left p-3">
-                                        <p>Holder Name</p>
-                                    </th>
-                                    <th class="text-left p-3">
-                                        <p>Payment Mode</p>
-                                    </th>
-                                    <th class="text-left p-3">
-                                        <p>Date</p>
-                                    </th>
-                                    <th class="text-left p-3">
-                                        <p>Credit Amount</p>
-                                    </th>
-                                    <th class="text-left p-3">
-                                        <p>Debit Amount</p>
-                                    </th>
-                                    <th class="text-left p-3">
-                                        <p>Description</p>
-                                    </th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr
-                                    v-for="(person, index) in persons"
-                                    :key="index"
-                                    class="border-t first:border-t-0 p-1 lg:p-3 table-row w-full"
-                                >
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">1</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Farves Safiyudeen</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">Gpay</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">18/04/2023</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">2000</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">-</p>
-                                    </td>
-                                    <td class="p-1 lg:p-3">
-                                        <p class="">
-                                            This is for Event Organizing
-                                        </p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
         <div
             class="whitespace-nowrap w-full overflow-x-scroll shadow rounded-lg"
         >
@@ -429,7 +125,7 @@
                 class="mat-elevation-z8 w-full"
             >
                 <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
+                      The actual rendered columns are set as a property on the row definition" -->
 
                 <ng-container matColumnDef="position">
                     <th mat-header-cell *matHeaderCellDef>SN</th>
@@ -473,10 +169,38 @@
                     </td>
                 </ng-container>
 
+                <ng-container matColumnDef="incluExclu">
+                    <th mat-header-cell *matHeaderCellDef>Inclu / Exclu</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.incluExclu }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="taxRate">
+                    <th mat-header-cell *matHeaderCellDef>Tax Rate</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.taxRate }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="taxAmount">
+                    <th mat-header-cell *matHeaderCellDef>Tax Amount</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.taxAmount }}
+                    </td>
+                </ng-container>
+
                 <ng-container matColumnDef="description">
                     <th mat-header-cell *matHeaderCellDef>Description</th>
                     <td mat-cell *matCellDef="let element">
                         {{ element.description }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="runningBalance">
+                    <th mat-header-cell *matHeaderCellDef>Balance</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.runningBalance }}
                     </td>
                 </ng-container>
 
