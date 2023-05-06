@@ -88,24 +88,6 @@ export class IncomeCategoriesDialogComponent {
             });
     }
 
-    SendData() {
-        // this.NewCateName.userId=parseInt(localStorage.getItem("userId"))
-        this._incomeService
-            .addIncomeCategoryData(this.NewCateName)
-            .subscribe((res) => {
-                this._commonService.decryptData(res);
-                console.log(this._commonService.decryptData(res));
-                this._incomeService
-                    .getIncomeCategoryData(this.incomeCategory)
-                    .subscribe((resp) => {
-                        this.data.result =
-                            this._commonService.decryptData(resp);
-                    });
-
-                this.changeDetection.detectChanges();
-                // this.dataEvent.emit('added');
-            });
-    }
     ngAfterViewInit(): void {}
 
     uploadImage(event: any) {

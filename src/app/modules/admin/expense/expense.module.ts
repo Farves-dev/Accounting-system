@@ -11,6 +11,7 @@ import { CollectDialogComponent } from './components/collect-dialog/collect-dial
 import { ManageExpenseComponent } from './components/manage-expense/manage-expense.component';
 import { PaymentDialogComponent } from './components/payment-dialog/payment-dialog.component';
 import { ReceiptDialogComponent } from './components/receipt-dialog/receipt-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,12 @@ import { ReceiptDialogComponent } from './components/receipt-dialog/receipt-dial
         PaymentDialogComponent,
         ReceiptDialogComponent,
     ],
-    imports: [CommonModule, ExpenseRoutingModule, MaterialExampleModule],
+    imports: [
+        CommonModule,
+        ExpenseRoutingModule,
+        MaterialExampleModule,
+        ReactiveFormsModule,
+        FormsModule,
+    ],
 })
 export class ExpenseModule {}
