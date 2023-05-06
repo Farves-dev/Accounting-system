@@ -20,30 +20,9 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 
 import { DatePipe } from '@angular/common';
 import { IncomeService } from 'app/shared/services/income.service';
-
-export interface IncomeCategories {
-    position: number;
-    categoryName: string;
-    imgUrl: string;
-}
-
-const ELEMENT_DATA: IncomeCategories[] = [
-    {
-        position: 1,
-        categoryName: 'Sales Revenue',
-        imgUrl: 'assets/images/sales-revenue.png',
-    },
-    {
-        position: 2,
-        categoryName: 'Interest Revenue',
-        imgUrl: 'assets/images/interest-revenue.png',
-    },
-    {
-        position: 3,
-        categoryName: 'Commission Revenue',
-        imgUrl: 'assets/images/commission-revenue.png',
-    },
-];
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { environment } from 'environments/environment';
 
 @Component({
     selector: 'app-income-categories',
@@ -51,58 +30,115 @@ const ELEMENT_DATA: IncomeCategories[] = [
     styleUrls: ['./income-categories.component.scss'],
 })
 export class IncomeCategoriesComponent {
-    @ViewChild(IncomeCategoriesDialogComponent)
-    IncomeCategoriesDialogComponent: IncomeCategoriesDialogComponent;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    dataSource: MatTableDataSource<any>;
+    getCategoryModal: getIncomeCategory = new getIncomeCategory();
+    displayedColumns: string[] = ['position', 'categoryName', 'actions'];
+
+    incomeCategoryModal: AddIncomeCategory = new AddIncomeCategory();
+    incomeResult: any;
+    url = environment.BASE_URL;
+
+    // startDate: Date;
+    // endDate: Date;
+    // datePicker: any;
 
     constructor(
         private router: Router,
-        private commonService: CommonService,
+        private _commonService: CommonService,
         public dialog: MatDialog,
         private changeDetection: ChangeDetectorRef,
         private datePipe: DatePipe,
         private _incomeService: IncomeService
     ) {}
 
-    displayedColumns: string[] = ['position', 'categoryName', 'actions'];
-    dataSource = ELEMENT_DATA;
-
-    data: getIncomeCategory = new getIncomeCategory();
-    showAddDialog: boolean = false;
-    showDeleteDialog: boolean = false;
-    incomeCategory: any;
-    incomeCategoryModal: AddIncomeCategory = new AddIncomeCategory();
-    incomeResult: any;
-
-    startDate: Date;
-    endDate: Date;
-    datePicker: any;
-
-    openAddDialog() {
-        const dialogRef = this.dialog.open(IncomeCategoriesDialogComponent, {
-            width: '400px',
-            data: {
-                name: this.incomeCategoryModal.categoryName,
-                result: this.incomeResult,
-            },
-        });
+    ngOnInit(): void {
+        this.getCategoryModal.userId = this._commonService.getUserId();
+        this.getCategory();
     }
-    // dialogRef.afterClosed().subscribe((result) => {
-    //     console.log(`Dialog result: ${result}`);
-    //     this.incomeCategoryModal.categoryName = result;
-    //     console.log(this.incomeCategoryModal);
-    // });
+
+    applyFilter() {
+        this.dataSource.filter = '' + Math.random();
+    }
 
     navigateToHome() {
-        this.commonService.navigateToHome();
+        this._commonService.navigateToHome();
     }
 
-    openDeleteDialog() {
-        const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    addCategory() {
+        const dialogRef = this.dialog.open(IncomeCategoriesDialogComponent, {
             width: '400px',
         });
+
         dialogRef.afterClosed().subscribe((result) => {
-            console.log(`Dialog result: ${result}`);
+            if (result) {
+                this.getCategory();
+            }
         });
+    }
+
+    openDeleteDialog(id: number) {
+        const dialogRef = this.dialog.open(DeleteDialogComponent, {
+            width: '400px',
+            data: { id },
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                this.getCategory();
+            }
+        });
+    }
+
+    searchAccount(event: any) {
+        this.getCategoryModal.search =
+            event.target.value === '' ? null : event.target.value;
+        this.getCategory();
+    }
+
+    getCategory() {
+        console.log(this.getCategoryModal);
+
+        this._incomeService
+            .getCategory(this.getCategoryModal)
+            .subscribe((res) => {
+                // const decryptedData = this._commonService.decryptData(res);
+                console.log(
+                    JSON.parse(
+                        JSON.stringify(this._commonService.decryptData(res))
+                    )
+                );
+
+                this.dataSource = new MatTableDataSource(
+                    this._commonService.decryptData(res)
+                );
+
+                this.dataSource.paginator = this.paginator;
+                // this.dataSource.sort = this.sort;
+                this.changeDetection.detectChanges();
+            });
+    }
+
+    editCategory(element: any) {
+        const dialogRef = this.dialog.open(IncomeCategoriesDialogComponent, {
+            width: '400px',
+            data: element,
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                this.getCategory();
+            }
+        });
+    }
+
+    clearDate() {
+        (this.getCategoryModal.startDate = null),
+            (this.getCategoryModal.endDate = null),
+            this.getCategory();
+    }
+
+    dateFilter() {
+        this.getCategory();
     }
 
     // categoryId: number;
@@ -114,23 +150,6 @@ export class IncomeCategoriesComponent {
     // confirm() {}
 
     ngAfterViewInit() {}
-
-    ngOnInit() {
-        // this.getIncomeCategory();
-        // const today = new Date();
-        // const firstDayOfMonth = new Date(
-        //     today.getFullYear(),
-        //     today.getMonth(),
-        //     1
-        // );
-        // const lastDayOfMonth = new Date(
-        //     today.getFullYear(),
-        //     today.getMonth() + 1,
-        //     0
-        // );
-        // this.startDate = firstDayOfMonth;
-        // this.endDate = lastDayOfMonth;
-    }
 
     // onSuccessAdd(event) {
     //     if (event == 'added') {
