@@ -1,6 +1,6 @@
 <!-- Angular Material Dialog -->
 <h2 mat-dialog-title class="mb-2">Add Income Category</h2>
-<form [formGroup]="addCategoryForm" (ngSubmit)="sendData()">
+<form [formGroup]="addCategoryForm" (ngSubmit)="addOrUpdateCategory()">
     <mat-dialog-content class="mat-typography mb-2 flex flex-col gap-4">
         <div class="flex flex-col gap-4">
             <label for="category-name" class="text-[1rem] font-medium"
@@ -17,14 +17,21 @@
 
         <div class="flex flex-col gap-2 w-fit">
             <label class="font-medium" for="icon">Add Icon</label>
+
             <input
                 id="icon"
                 type="file"
                 accept="image/*"
-                (change)="uploadImage($event)"
+                (change)="saveImage($event)"
                 class="file:border-myAccent file:bg-transparent file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded file:border-[1px] hover:file:bg-myAccent hover:file:text-white file:text-myAccent file:transition-all"
             />
         </div>
+        <div *ngIf="imageUrl">
+            <img [src]="imageUrl" alt="" />
+        </div>
+        <!-- <div *ngIf="data">
+            <img [src]="url" alt="" />
+        </div> -->
     </mat-dialog-content>
     <mat-dialog-actions align="end" class="flex gap-4 items-center">
         <button
@@ -35,11 +42,11 @@
         </button>
         <button
             class="bg-myAccent text-white border border-myAccent hover:bg-accentHover transition rounded px-4 py-2"
-            [mat-dialog-close]="data.name"
+            [mat-dialog-close]="true"
             cdkFocusInitial
             type="submit"
         >
-            Add
+            {{ updateFormData != undefined ? "Update" : "Add" }}
         </button>
     </mat-dialog-actions>
 </form>

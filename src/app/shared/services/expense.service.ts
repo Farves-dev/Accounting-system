@@ -27,6 +27,24 @@ export class ExpenseService {
         );
     }
 
+    updateCategory(value: any) {
+        return this.http.post(
+            environment.BASE_URL + '/update/category',
+            {
+                data: this._commonService.encryptData(value),
+            },
+            this._commonService.httpOptions
+        );
+    }
+
+    deleteCategory(value: any) {
+        return this.http.post(
+            environment.BASE_URL + '/delete/category',
+            { data: this._commonService.encryptData(value) },
+            this._commonService.httpOptions
+        );
+    }
+
     getCategory(value: any) {
         return this.http.post(
             this.env.BASE_URL + '/search/category',
