@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ExpenseCategoriesDialogComponent } from '../expense-categories-dialog/expense-categories-dialog.component';
 import { CommonService } from 'app/shared/services/common.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
-import { IncomeCategoriesDialogComponent } from 'app/modules/admin/income/components/income-categories-dialog/income-categories-dialog.component';
 import { ExpenseCategory } from 'app/shared/modals/expense-category';
 
 export interface ExpenseCategories {
@@ -59,7 +58,7 @@ export class ExpenseCategoriesComponent implements OnInit {
     }
 
     openAddDialog() {
-        const dialogRef = this.dialog.open(IncomeCategoriesDialogComponent, {
+        const dialogRef = this.dialog.open(ExpenseCategoriesDialogComponent, {
             width: '400px',
             data: {
                 name: this.expenseCategoryModal.categoryName,

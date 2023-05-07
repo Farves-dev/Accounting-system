@@ -13,6 +13,7 @@
             class="bg-myAccent text-white border border-myAccent hover:bg-accentHover transition rounded px-4 py-2"
             [mat-dialog-close]="true"
             cdkFocusInitial
+            (click)="deleteCategory()"
         >
             Delete
         </button>

@@ -13,12 +13,8 @@ export class IncomeService {
         private router: Router,
         private _commonService: CommonService
     ) {}
+
     env = environment;
-    header = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-        }),
-    };
 
     // addIncomeCategoryData(request: any) {
     //     console.log(request);
@@ -47,12 +43,30 @@ export class IncomeService {
     // }
 
     addCategoryImage(value: any) {
-        return this.http.post(this.env.BASE_URL + '/images', value);
+        return this.http.post(environment.BASE_URL + '/images', value);
     }
 
     addCategory(value: any) {
         return this.http.post(
-            this.env.BASE_URL + '/add/category',
+            environment.BASE_URL + '/add/category',
+            { data: this._commonService.encryptData(value) },
+            this._commonService.httpOptions
+        );
+    }
+
+    updateCategory(value: any) {
+        return this.http.post(
+            environment.BASE_URL + '/update/category',
+            {
+                data: this._commonService.encryptData(value),
+            },
+            this._commonService.httpOptions
+        );
+    }
+
+    deleteCategory(value: any) {
+        return this.http.post(
+            environment.BASE_URL + '/delete/category',
             { data: this._commonService.encryptData(value) },
             this._commonService.httpOptions
         );
@@ -60,8 +74,10 @@ export class IncomeService {
 
     getCategory(value: any) {
         return this.http.post(
-            this.env.BASE_URL + '/search/category',
-            { data: this._commonService.encryptData(value) },
+            environment.BASE_URL + '/search/category',
+            {
+                data: this._commonService.encryptData(value),
+            },
             this._commonService.httpOptions
         );
     }
