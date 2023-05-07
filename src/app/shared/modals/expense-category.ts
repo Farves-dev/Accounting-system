@@ -11,5 +11,5 @@ export class getExpenseCategory {
     startDate: number = null;
     endDate: number = null;
     type: number = 1;
-    userId: number = 4;
+    userId: number = null;
 }

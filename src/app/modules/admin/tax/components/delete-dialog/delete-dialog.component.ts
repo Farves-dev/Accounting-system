@@ -19,7 +19,7 @@ export class DeleteDialogComponent implements OnInit {
     userId: any;
 
     ngOnInit(): void {
-        this.userId = parseInt(localStorage.getItem('userId'));
+        this.userId = this._commonService.getUserId();
     }
 
     deleteTax() {

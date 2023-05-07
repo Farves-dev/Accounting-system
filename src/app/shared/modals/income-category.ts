@@ -11,5 +11,5 @@ export class getIncomeCategory {
     endDate: number = null;
     offset: number = null;
     type: number = 0;
-    userId: number = 4;
+    userId: number = null;
 }
